@@ -1,6 +1,8 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
+  background-image: url("../image/background-img.png");
+  background-repeat: repeat;
+  background-size: 75%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,8 +72,10 @@ body {
 .password_eye {
   width: 15px;
   height: 20px;
-  margin-left: -27px;
-  margin-bottom: -6px;
+  margin-left: 290px;
+  margin-top: -32.6px;
+  position: absolute;
+
 }
 .nav-page{    
   font-size: 15px;    
@@ -89,5 +93,6 @@ body {
   justify-content: right;
   align-items: center;
 }
+
 
 
