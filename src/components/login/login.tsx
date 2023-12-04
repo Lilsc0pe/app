@@ -17,8 +17,7 @@ function Login() {
   const onLogin = (e: any) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
+      .then((userCredential) => {        
         const user = userCredential.user;
         navigate("/profile");
         console.log(user);

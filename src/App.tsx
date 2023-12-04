@@ -5,7 +5,7 @@ import Login from "./components/login/login";
 import Register from "./components/registration/registeration";
 import Profile from "./components/profile/profile";
 import EditProfile from "./components/profile/editProfile";
-
+import Home from "./components/home/home";
 const App: React.FC = () => {
   return (
     <Router>
@@ -14,6 +14,7 @@ const App: React.FC = () => {
         <Route path="/register" element={<Register/>} />
         <Route path="/profile" element={<Profile/>} />
         <Route path="/edit-profile" element={<EditProfile/>} />
+        <Route path="/header" element={<Home />} />
       </Routes>
     </Router>
   );
