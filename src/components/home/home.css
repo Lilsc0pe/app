@@ -1,42 +1,40 @@
-/* home.css */
 .container {
-  width: 100%;
-  margin: 0 auto;
+  font-family: 'Arial', sans-serif;
+  background-color: #e4fde1; /* Light green background, similar to the image */
+  color: #004d40; /* Dark green text color for contrast */
   padding: 20px;
 }
 
 .navbar {
   display: flex;
-  justify-content: space-between;
-  background-color: #4CAF50; /* Example color */
-  padding: 10px;
+  justify-content: space-between; /* Space out the navbar items */
+  padding-bottom: 20px;
+  border-bottom: 2px solid #004d40; /* Dark green bottom border */
 }
 
 .navbar a {
   text-decoration: none;
-  color: white;
-  padding: 10px;
-  margin: 0 5px;
+  color: #004d40;
+  font-weight: bold;
+  margin: 0 10px;
 }
 
-.navbar .right {
-  float: right;
+.navbar a.right {
+  order: 2; /* Move to the right side */
 }
 
-.main-content {
-  text-align: center;
-  margin-top: 20px;
-}
-
-h2 {
+.main-content h2 {
+  font-size: 24px; /* Larger font size for headings */
+  color: #d35400; /* Orange color for heading text */
   margin-bottom: 20px;
 }
 
 .announcement {
-  background-color: #f2f2f2; /* Example color */
-  margin: 10px auto;
+  background-color: #ffffff; /* White background for announcement boxes */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   padding: 20px;
-  width: 80%;
-  /* Add a border if you like */
-  border: 1px solid #ddd;
+  margin-bottom: 20px;
 }
+
+/* Additional styles for responsive layout, hover effects, etc., can be added here */
