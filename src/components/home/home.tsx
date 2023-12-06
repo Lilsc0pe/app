@@ -1,19 +1,44 @@
-import { Link, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import React, { useState, useEffect } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
+import { Link } from "react-router-dom";
 import "./home.css";
 
-import backgroundImage from "../images/background-img.png";
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+// Інтерфейс для елементів масиву
+interface Item {
+  imageUrl: string;
+  text_1: string;
+  text_2: string;
+  text_3: string;
+}
 
 function Home() {
+  const [items, setItems] = useState<Item[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const querySnapshot = await getDocs(collection(db, "home"));
+      const fetchedItems: Item[] = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data() as Item;
+        fetchedItems.push(data);
+      });
+      setItems(fetchedItems);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <form className="form-home">
       <header className="header">
-        <div className="logo">AutoScout</div>
+        <div className="logo ">AutoScout</div>
         <nav className="navbar">
           <ul className="nav-links">
-            <li className="li-center">
+            <li className="li-center ">
               <Link to="/">Оголошення</Link>
             </li>
             <li>
@@ -29,31 +54,14 @@ function Home() {
         </nav>
       </header>
       <div className="container">
-        <div className="block">
-          <img src={backgroundImage} alt="image" />
-          <p>Text-1</p>
-          <p>Text-2</p>
-          <p>Text-3</p>
-        </div>
-        <div className="block">
-          <img src={backgroundImage} alt="image" />
-          <p>Text-1</p>
-          <p>Text-2</p>
-          <p>Text-3</p>
-        </div>
-
-        <div className="block">
-          <img src={backgroundImage} alt="image" />
-          <p>Text-1</p>
-          <p>Text-2</p>
-          <p>Text-3</p>
-        </div>
-        <div className="block">
-          <img src={backgroundImage} alt="image" />
-          <p>Text-1</p>
-          <p>Text-2</p>
-          <p>Text-3</p>
-        </div>
+        {items.map((item, index) => (
+          <div className="block" key={index}>
+            <img src={item.imageUrl} alt="image" />
+            <p>{item.text_1}</p>
+            <p>{item.text_2}</p>
+            <p>{item.text_3}</p>
+          </div>
+        ))}
       </div>
     </form>
   );
