@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { auth, db } from "../../firebase";
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 
-import "./editProfile.css"
+import "./editProfile.css";
 
 export interface IData {
   id: string;
@@ -48,8 +48,7 @@ function EditProfile() {
         );
         const newDoc = doc(db, "name", ref);
 
-        updateDoc(newDoc, { id: auth.currentUser.uid, name });      
-        
+        updateDoc(newDoc, { id: auth.currentUser.uid, name });
       }
     } catch (error) {
       console.log(error);
@@ -57,8 +56,7 @@ function EditProfile() {
   };
   return (
     <div>
-           
-      <form>
+      <form className="form-registration-login-profile">
         <h2 className="name-content">Edit</h2>
         <div>
           <label htmlFor="email-address">Name</label>
@@ -69,16 +67,14 @@ function EditProfile() {
             required
             placeholder="Name"
           />
-        </div>        
+        </div>
 
-        <Link to="/profile"><button type="submit" onClick={handleChange}>
-          Change
-        </button></Link>
-
-
-        
+        <Link to="/profile">
+          <button type="submit" onClick={handleChange}>
+            Change
+          </button>
+        </Link>
       </form>
-   
     </div>
   );
 }
