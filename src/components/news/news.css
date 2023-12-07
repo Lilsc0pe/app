@@ -1,62 +1,66 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-image: url('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRBfbpYtwfqjgal9nODi_18-bu9v7TYfzLvgqqdjleM7-osuzZk'); /* Replace 'background.jpg' with your actual background image path */
-    background-size: cover;
-    background-position: center;
-    color: rgb(0, 0, 0); /* Set text color to white for better visibility on the background image */
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-image: url("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRBfbpYtwfqjgal9nODi_18-bu9v7TYfzLvgqqdjleM7-osuzZk"); /* Replace 'background.jpg' with your actual background image path */
+  background-size: cover;
+  background-position: center;
+  color: rgb(
+    0,
+    0,
+    0
+  ); /* Set text color to white for better visibility on the background image */
+}
 
 .container {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    overflow: hidden;
-    background-color: #fff; /* Transparent background */
-  }
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  background-color: #fff; /* Transparent background */
+}
 
-  .form-container {
-    float: left;
-    width: 100%;
-  }
+.form-container {
+  float: left;
+  width: 100%;
+}
 
-  .form-container img {
-    max-width: 100%;
-    height: auto;
-  }
+.form-container img {
+  max-width: 100%;
+  height: auto;
+}
 
-  .text-container {
-    float: left;
-    width: 60%;
-  }
+.text-container {
+  float: left;
+  width: 60%;
+}
 
-  h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
 
-  h6 {
-    font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 10px;
-  }
+h6 {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
 
-  button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    font-size: 18px;
-    text-align: center;
-    background-color: #199237;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  text-align: center;
+  background-color: #199237;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
 
-  .button-container {
-    text-align: center;
-    margin-top: 20px;
-  }
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}

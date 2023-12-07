@@ -4,12 +4,10 @@ import { db } from "../../firebase";
 import { Link } from "react-router-dom";
 import "./home.css";
 
-import "bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-
-// Інтерфейс для елементів масиву
 interface Item {
-  imageUrl: string;
+  imageURL: string;
+  id: string;
+  name: string;
   text_1: string;
   text_2: string;
   text_3: string;
@@ -23,7 +21,7 @@ function Home() {
       const querySnapshot = await getDocs(collection(db, "home"));
       const fetchedItems: Item[] = [];
       querySnapshot.forEach((doc) => {
-        const data = doc.data() as Item;
+        const data = { id: doc.id, ...doc.data() } as Item;
         fetchedItems.push(data);
       });
       setItems(fetchedItems);
@@ -35,12 +33,9 @@ function Home() {
   return (
     <form className="form-home">
       <header className="header">
-        <div className="logo ">AutoScout</div>
+        <div className="logo">AutoScout</div>
         <nav className="navbar">
           <ul className="nav-links">
-            <li className="li-center ">
-              <Link to="/">Оголошення</Link>
-            </li>
             <li>
               <Link to="/news">Новини</Link>
             </li>
@@ -53,16 +48,21 @@ function Home() {
           </ul>
         </nav>
       </header>
-      <div className="container">
-        {items.map((item, index) => (
-          <div className="block" key={index}>
-            <img src={item.imageUrl} alt="image" />
-            <p>{item.text_1}</p>
-            <p>{item.text_2}</p>
-            <p>{item.text_3}</p>
+      {items.map((item) => (
+        <Link to={`/announce/${item.id}`} key={item.id}>
+          <div className="container">
+            <div className="block" key={item.id}>
+              <img src={item.imageURL} alt="image" />
+              <div className="text-container">
+                <h2>{item.name}</h2>
+                <p>{item.text_1}</p>
+                <p>{item.text_2}</p>
+                <p>{item.text_3}</p>
+              </div>
+            </div>
           </div>
-        ))}
-      </div>
+        </Link>
+      ))}
     </form>
   );
 }
