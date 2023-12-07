@@ -36,6 +36,9 @@ function Home() {
         <div className="logo">AutoScout</div>
         <nav className="navbar">
           <ul className="nav-links">
+          <li>
+              <Link to="/announce">Оголошення</Link>
+            </li>
             <li>
               <Link to="/news">Новини</Link>
             </li>
