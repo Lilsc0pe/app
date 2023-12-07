@@ -19,7 +19,6 @@ function Profile() {
     const fetchData = async () => {
       try {
         if (auth.currentUser !== null) {
-          
           const querySnapshot = await getDocs(collection(db, "name"));
           const newData = querySnapshot.docs.map((doc) => doc.data() as IData);
           const getName = newData.find(
@@ -43,14 +42,14 @@ function Profile() {
 
   const handleSignOut = () => {
     try {
-      auth.signOut(); 
+      auth.signOut();
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <form>
+    <form className="form-registration-login-profile">
       {success && (
         <p className="success-message">Changes saved successfully!</p>
       )}
@@ -61,14 +60,15 @@ function Profile() {
         <p>Name: {name}</p>
         <p>Email: {email}</p>
       </div>
-      
+
       <Link to="/edit-profile">
         <button>Edit Profile</button>
       </Link>
       <Link to="/login">
-      <button className="off-click" onClick={handleSignOut}>Sign Out</button>
+        <button className="off-click" onClick={handleSignOut}>
+          Sign Out
+        </button>
       </Link>
-      
     </form>
   );
 }
