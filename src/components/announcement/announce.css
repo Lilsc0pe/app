@@ -50,12 +50,14 @@
   font-size: 16px;
 }
 
-.main-content{
+.main-content {
   background-color: #faab00;
-  height: auto;
-  width: auto;
-  min-height: 420px;
+  display: flex; /* Изменение на flex для выравнивания блоков */
+  justify-content: space-between; /* Равное расстояние между блоками */
+  align-items: flex-start; /* Выравнивание элементов по верхнему краю */
+  padding: 20px; /* Придаем отступы для контейнера .main-content */
 }
+
 
 
 
@@ -85,28 +87,37 @@
 
 
 
-.filters{
+.filters {
   flex-direction: column;
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
   margin: 15px;
   border-radius: 25px;
   float: right;
   min-width: 250px;
+  padding: 20px; /* Добавлены отступы внутри блока фильтров */
 }
 
-h3{
-  display: flex;
-  justify-content: center;
+.filters div {
+  margin-bottom: 15px; /* Отступ между элементами фильтров */
 }
 
-.filter-label{
-  margin: 13px;
+.filters label {
+  display: block;
+  margin-bottom: 5px;
 }
 
-
-.filters input[type="text"] {
-  max-width: 93%;
+.filters input[type="text"],
+.filters select {
+  width: calc(100% - 20px); /* Учитываем внутренние отступы для текстовых полей */
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }
+
+.filters select {
+  padding: 8px 5px; /* Коррекция отступов для выпадающего списка */
+}
+
 
 
 .popular-offers{
