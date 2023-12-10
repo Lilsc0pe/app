@@ -147,20 +147,6 @@ function Announce() {
             </select>
           </div>
         </div>
-        <div className="popular-offers">
-          {/* Блок с популярными предложениями */}
-          {item && (
-            <div className="announce">
-              <img src={item.imageURL} alt="image" />
-              <div className="text-container">
-                <h2>{item.name}</h2>
-                <p>{item.text_1}</p>
-                <p>{item.text_2}</p>
-                <p>{item.text_3}</p>
-              </div>
-            </div>
-          )}
-        </div>
         <div className="search-bar">
           {/* Поисковая строка */}
           <input type="text" placeholder="Поиск..." />
@@ -173,7 +159,6 @@ function Announce() {
           <p>Цена: $1000</p>
         </div>
       </div>
-
       <div className="ad-box">
         <img src="url_to_your_image_2" alt="Ad Image 2" />
         <div className="ad-info">
@@ -190,8 +175,11 @@ function Announce() {
           <p>Описание предложения 3</p>
           <p>Цена: $1500</p>
         </div>
-      </div>
         </div>
+        
+
+      
+      </div>
       </div>
     </form>
   );
