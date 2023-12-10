@@ -19,7 +19,7 @@ function Announce() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const itemDoc = await getDoc(doc(db, "home", id as string));
+      const itemDoc = await getDoc(doc(db, "announce", id as string));
       const data = { id: itemDoc.id, ...itemDoc.data() } as Item;
       setItem(data);
     };
@@ -147,50 +147,28 @@ function Announce() {
             </select>
           </div>
         </div>
-        <div className="popular-offers">
-          {/* Блок с популярными предложениями */}
-          {item && (
-            <div className="announce">
-              <img src={item.imageURL} alt="image" />
-              <div className="text-container">
-                <h2>{item.name}</h2>
-                <p>{item.text_1}</p>
-                <p>{item.text_2}</p>
-                <p>{item.text_3}</p>
-              </div>
-            </div>
-          )}
-        </div>
+        <div className="container-search">
         <div className="search-bar">
-          {/* Поисковая строка */}
-          <input type="text" placeholder="Поиск..." />
-          <button>Найти</button>
-          <div className="ad-box">
-        <img src="url_to_your_image_1" alt="Ad Image 1" />
-        <div className="ad-info">
-          <h3>Название предложения 1</h3>
-          <p>Описание предложения 1</p>
-          <p>Цена: $1000</p>
-        </div>
-      </div>
-
-      <div className="ad-box">
-        <img src="url_to_your_image_2" alt="Ad Image 2" />
-        <div className="ad-info">
-          <h3>Название предложения 2</h3>
-          <p>Описание предложения 2</p>
-          <p>Цена: $2000</p>
-        </div>
-      </div>
-
-      <div className="ad-box">
-        <img src="url_to_your_image_3" alt="Ad Image 3" />
-        <div className="ad-info">
-          <h3>Название предложения 3</h3>
-          <p>Описание предложения 3</p>
-          <p>Цена: $1500</p>
-        </div>
-      </div>
+            {/* Поисковая строка */}
+            <input type="text" placeholder="Поиск..." />
+            <button>Найти</button>
+          </div>
+          <div className="popular-offers">
+            {/* Блок с популярными предложениями */}
+            {items.map((item) => (
+              <div className="container">
+                <div className="block" key={item.id}>
+                  <img src={item.imageURL} alt="image" />
+                  <div className="text-container">
+                    <h2>{item.name}</h2>
+                    <p>{item.text_1}</p>
+                    <p>{item.text_2}</p>
+                    <p>{item.text_3}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </form>

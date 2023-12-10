@@ -72,7 +72,7 @@ function Login() {
           </div>
         </div>
 
-        <div>
+        <div className="button-login-registration"> 
           <button onClick={onLogin}>Login</button>
         </div>
 
