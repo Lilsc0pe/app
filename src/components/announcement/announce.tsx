@@ -15,7 +15,7 @@ interface Item {
 
 function Announce() {
   const { id } = useParams();
-  const [item, setItem] = useState<Item | null>(null);
+  const [announce, setItem] = useState<Item | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -155,19 +155,19 @@ function Announce() {
           </div>
           <div className="popular-offers">
             {/* Блок с популярными предложениями */}
-            {items.map((item) => (
+            {/* {announces.map((announce) => (
               <div className="container">
-                <div className="block" key={item.id}>
-                  <img src={item.imageURL} alt="image" />
+                <div className="block" key={announce.id}>
+                  <img src={announce.imageURL} alt="image" />
                   <div className="text-container">
-                    <h2>{item.name}</h2>
-                    <p>{item.text_1}</p>
-                    <p>{item.text_2}</p>
-                    <p>{item.text_3}</p>
+                    <h2>{announce.name}</h2>
+                    <p>{announce.text_1}</p>
+                    <p>{announce.text_2}</p>
+                    <p>{announce.text_3}</p>
                   </div>
                 </div>
               </div>
-            ))}
+            ))} */}
           </div>
         </div>
       </div>
