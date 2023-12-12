@@ -16,6 +16,7 @@ interface Item {
 function Announce() {
   const { id } = useParams();
   const [item, setItem] = useState<Item | null>(null);
+  const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,6 +28,10 @@ function Announce() {
     fetchData();
   }, [id]);
 
+  const toggleFilters = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault(); // Избегаем перезагрузки страницы
+    setShowFilters(!showFilters);
+  };
   return (
     <form className="form-home">
       <header className="header">
@@ -49,9 +54,17 @@ function Announce() {
         </nav>
       </header>
       <div className="main-content">
-        <div className="filters">
-          {/* Фильтры */}
-          <h3>Фильтры</h3>
+        <div className="mini-box">
+          <div className="search-bar">
+            <input type="text" placeholder="Поиск..." />
+            <button>Найти</button>
+            <button onClick={toggleFilters}>Фильтры</button>
+          </div>
+        </div>
+        {showFilters && (
+          <div className="filters">
+            {/* ... (ваш код с фильтрами без изменений) */}
+            <h3>Фильтры</h3>
           <div>
                <label htmlFor="brand">Марка авто:</label>
              <select id="brand">
@@ -146,40 +159,9 @@ function Announce() {
               {/* Другие варианты регионов */}
             </select>
           </div>
-        </div>
-        <div className="search-bar">
-          {/* Поисковая строка */}
-          <input type="text" placeholder="Поиск..." />
-          <button>Найти</button>
-          <div className="ad-box">
-        <img src="url_to_your_image_1" alt="Ad Image 1" />
-        <div className="ad-info">
-          <h3>Название предложения 1</h3>
-          <p>Описание предложения 1</p>
-          <p>Цена: $1000</p>
-        </div>
-      </div>
-      <div className="ad-box">
-        <img src="url_to_your_image_2" alt="Ad Image 2" />
-        <div className="ad-info">
-          <h3>Название предложения 2</h3>
-          <p>Описание предложения 2</p>
-          <p>Цена: $2000</p>
-        </div>
-      </div>
-
-      <div className="ad-box">
-        <img src="url_to_your_image_3" alt="Ad Image 3" />
-        <div className="ad-info">
-          <h3>Название предложения 3</h3>
-          <p>Описание предложения 3</p>
-          <p>Цена: $1500</p>
-        </div>
-        </div>
-        
-
-      
-      </div>
+          </div>
+        )}
+        {/* ... (остальной код без изменений) */}
       </div>
     </form>
   );
