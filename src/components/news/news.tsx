@@ -4,7 +4,28 @@ import { db } from "../../firebase";
 import { Link } from "react-router-dom";
 import "./news.css";
 
-const News: React.FC = () => {
+interface Item { 
+  imageURL: string; 
+  id: string; 
+  name: string; 
+  text_1: string; 
+  text_2: string; 
+  text_3: string; 
+} 
+ 
+function news() { 
+  const { id } = useParams(); 
+  const [announce, setItem] = useState<Item | null>(null); 
+ 
+  useEffect(() => { 
+    const fetchData = async () => { 
+      const itemDoc = await getDoc(doc(db, "announce", id as string)); 
+      const data = { id: itemDoc.id, ...itemDoc.data() } as Item; 
+      setItem(data); 
+    }; 
+ 
+    fetchData(); 
+  }, [id]); 
     return (
       <form className="form-home">
       <header className="header">
@@ -26,6 +47,8 @@ const News: React.FC = () => {
           </ul>
         </nav>
       </header>
+
+
         <div className="container">
           <div className="form-container">
             <form>
@@ -37,7 +60,7 @@ const News: React.FC = () => {
               </div>
               <h1>Машины продаются дешево</h1>
               <h6>Поскольку машина это машина ее можно использовать как машина, что значит машины есть</h6>
-              <button>Читать дальше</button>
+              <button onClick={Link to="/news_block1"}>Читать дальше</button>
             </form>
           </div>
         </div>
@@ -53,7 +76,7 @@ const News: React.FC = () => {
               </div>
               <h1>Шок!!!Самый популярный цвет в 2024</h1>
               <h6>Самый популярный цвет в 2024 это ... поскольку он помогает понять что у человека на уме</h6>
-              <button>Читать дальше</button>
+              <button onClick={Link to="/news_block2"}>Читать дальше</button>
             </form>
           </div>
         </div>
@@ -69,13 +92,11 @@ const News: React.FC = () => {
               </div>
               <h1>Самая популярная машина из СССР</h1>
               <h6>Косвенный признак № 1: в СССР объем рынка был почти равен объему выпуска · Косвенный признак (легенда) № 2. · Косвенный признак № 3. · Первое место ...</h6>
-              {/* <a href="profile.tsx" target="_blank"> */}
-              <button>Читать дальше</button>
-              {/* </a> */}
+              <button onClick={Link to="/news_block3"}>Читать дальше</button>
             </form>
           </div>
         </div>
     );
   };
   
-  export default News;
+  export default news;
