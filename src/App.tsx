@@ -7,6 +7,8 @@ import Profile from "./components/profile/profile";
 import EditProfile from "./components/profile/editProfile";
 import Home from "./components/home/home";
 import Аnnounce from "./components/announcement/announce";
+import News from "./components/news/news";
+import Filter from "./components/filter/filter";
 
 const App: React.FC = () => {
   return (
@@ -17,7 +19,9 @@ const App: React.FC = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/announce" element={<Аnnounce />} />
+        <Route path="/announce/:id" element={<Аnnounce />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/filter" element={<Filter />} />
       </Routes>
     </Router>
   );

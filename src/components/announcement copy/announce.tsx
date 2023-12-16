@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
-import { Link } from "react-router-dom";
-import "./home.css";
+import { Link, useParams } from "react-router-dom";
+import "./announce.css";
 
 interface Item {
   imageURL: string;
@@ -13,8 +13,32 @@ interface Item {
   text_3: string;
 }
 
+interface AnnounceProps {
+  item: Item;
+}
+
+function Announce({ item }: AnnounceProps) {
+  return (
+    <div className="container-announce">
+      <img src={item.imageURL} alt="image" />
+      <div className="block">
+        <div className="text-container">
+          <h2>{item.name}</h2>
+          <p>{item.text_1}</p>
+          <p>{item.text_2}</p>
+          <p>{item.text_3}</p>
+          <Link to={`/announce/${item.id}`} className="button">
+            Перейти
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Home() {
   const [items, setItems] = useState<Item[]>([]);
+  const { id } = useParams<{ id: string }>(); // Add this line to get the ID from the URL
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,6 +53,8 @@ function Home() {
 
     fetchData();
   }, []);
+
+  const filteredItems = items.filter((item) => item.id === id); // Add this line to filter the items array based on the ID
 
   return (
     <form className="form-home">
@@ -48,20 +74,8 @@ function Home() {
           </ul>
         </nav>
       </header>
-      {items.map((item) => (
-        <Link to={`/announce/${item.id}`} key={item.id}>
-          <div className="container">
-            <div className="block" key={item.id}>
-              <img src={item.imageURL} alt="image" />
-              <div className="text-container">
-                <h2>{item.name}</h2>
-                <p>{item.text_1}</p>
-                <p>{item.text_2}</p>
-                <p>{item.text_3}</p>
-              </div>
-            </div>
-          </div>
-        </Link>
+      {filteredItems.map((item) => (
+        <Announce item={item} />
       ))}
     </form>
   );
