@@ -197,17 +197,14 @@ function Announce() {
         <nav className="navbar">
           <ul className="nav-links">
           <li>
-              <Link to="/announce">{translations[language as keyof typeof translations].announceLink}</Link>
-          </li>
-          <li>
-            <Link to="/news">{translations[language as keyof typeof translations].newsLink}</Link>
-          </li>
-          <li>
-            <Link to="/login">{translations[language as keyof typeof translations].loginLink}</Link>
-          </li>
-          <li>
-            <Link to="/register">{translations[language as keyof typeof translations].registerLink}</Link>
-          </li>
+              <Link to="/news">Новини</Link>
+            </li>
+            <li>
+              <Link to="/login">Вхід</Link>
+            </li>
+            <li>
+              <Link to="/register">Регістрація</Link>
+            </li>
           </ul>
         </nav>
         <LanguageSwitchButton /> {/* Add LanguageSwitchButton */}
