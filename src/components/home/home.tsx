@@ -51,10 +51,10 @@ function Home() {
       {items.map((item) => (
         <Link to={`/announce/${item.id}`} key={item.id}>
           <div className="container">
-            <div className="block" key={item.id}>
-              <img src={item.imageURL} alt="image" />
-              <div className="text-container">
-                <h2>{item.name}</h2>
+            <div className="-" key={item.id}>
+              <img className="img-container" src={item.imageURL} alt="image" />
+              <h2>{item.name}</h2>
+              <div className="text-container-home">
                 <p>{item.text_1}</p>
                 <p>{item.text_2}</p>
                 <p>{item.text_3}</p>

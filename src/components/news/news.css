@@ -6,11 +6,7 @@
   background-image: url("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRBfbpYtwfqjgal9nODi_18-bu9v7TYfzLvgqqdjleM7-osuzZk"); /* Replace 'background.jpg' with your actual background image path */
   background-size: cover;
   background-position: center;
-  color: rgb(
-    0,
-    0,
-    0
-  ); /* Set text color to white for better visibility on the background image */
+  color: rgb(0, 0, 0);
 }
 
 .container {
@@ -30,11 +26,6 @@
 .form-container img {
   max-width: 100%;
   height: auto;
-}
-
-.text-container {
-  float: left;
-  width: 60%;
 }
 
 h1 {
