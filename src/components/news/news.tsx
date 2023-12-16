@@ -1,49 +1,69 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ReactNode } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./news.css";
 
-interface Item {
+interface News {
   imageNewsURL: string;
   id: string;
+  name: string;
   description: string;
 }
 
 function News() {
-  const [announce, setItem] = useState<Item[]>([]);
+  const [news, setNews] = useState<News[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const itemDoc = await getDocs(collection(db, "announce"));
-      const data = itemDoc.docs.map(
-        (doc) => ({ id: doc.id, ...doc.data() }) as Item
-      );
-      setItem(data);
+      const querySnapshot = await getDocs(collection(db, "news"));
+      const fetchedNews: News[] = [];
+      querySnapshot.forEach((doc) => {
+        const data = { id: doc.id, ...doc.data() } as News;
+        fetchedNews.push(data);
+      });
+      setNews(fetchedNews);
     };
 
     fetchData();
   }, []);
 
   return (
-    <div>
-      {announce !== null &&
-        announce.map((item: Item) => (
-          <div className="container" key={item.id}>
-            <div className="form-container">
-              <form>
-                <div className="text-container">
-                  <img src={item.imageNewsURL} alt="image" />
-                  <p>{item.description}</p>
-                </div>
-                <button>
-                  <Link to={`/new${item.id}`}>Читать дальше</Link>
-                </button>
-              </form>
+    <form className="form-home">
+      <header className="header">
+        <div className="logo">AutoScout</div>
+        <nav className="navbar">
+          <ul className="nav-links">
+            <li>
+              <Link to="/home">Головна</Link>
+            </li>
+            <li>
+              <Link to="/login">Вхід</Link>
+            </li>
+            <li>
+              <Link to="/register">Регістрація</Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      {news.map((News) => (
+        <Link to={`/announce/${News.id}`} key={News.id}>
+          <div className="container">
+            <div className="-" key={News.id}>
+              <img
+                className="img-container"
+                src={News.imageNewsURL}
+                alt="image"
+              />
+              <h2>{News.name}</h2>
+              <div className="text-container-home">
+                <p>{News.description}</p>
+              </div>
             </div>
           </div>
-        ))}
-    </div>
+        </Link>
+      ))}
+    </form>
   );
 }
 
