@@ -4,7 +4,7 @@ import { db } from "../../firebase";
 import { Link, useParams } from "react-router-dom";
 import "./announce.css";
 
-interface Item {
+interface Item_2 {
   imageURL: string;
   id: string;
   name: string;
@@ -15,12 +15,12 @@ interface Item {
 
 function Announce() {
   const { id } = useParams();
-  const [announce, setItem] = useState<Item | null>(null);
+  const [announce, setItem] = useState<Item_2 | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       const itemDoc = await getDoc(doc(db, "announce", id as string));
-      const data = { id: itemDoc.id, ...itemDoc.data() } as Item;
+      const data = { id: itemDoc.id, ...itemDoc.data() } as Item_2;
       setItem(data);
     };
 
@@ -33,7 +33,7 @@ function Announce() {
         <div className="logo">AutoScout</div>
         <nav className="navbar">
           <ul className="nav-links">
-          <li>
+            <li>
               <Link to="/announce">Оголошення</Link>
             </li>
             <li>
@@ -53,24 +53,24 @@ function Announce() {
           {/* Фильтры */}
           <h3>Фильтры</h3>
           <div>
-               <label htmlFor="brand">Марка авто:</label>
-             <select id="brand">
-           <option value="audi">Audi</option>
-           <option value="bmw">BMW</option>
-           <option value="mercedes">Mercedes-Benz</option>
-           <option value="toyota">Toyota</option>
-           <option value="honda">Honda</option>
-           <option value="volkswagen">Volkswagen</option>
-           <option value="ford">Ford</option>
-           <option value="nissan">Nissan</option>
-          <option value="hyundai">Hyundai</option>
-          <option value="kia">Kia</option>
-          <option value="mazda">Mazda</option>
-          <option value="chevrolet">Chevrolet</option>
-          <option value="subaru">Subaru</option>
-          <option value="peugeot">Peugeot</option>
-          <option value="fiat">Fiat</option>
-             </select>
+            <label htmlFor="brand">Марка авто:</label>
+            <select id="brand">
+              <option value="audi">Audi</option>
+              <option value="bmw">BMW</option>
+              <option value="mercedes">Mercedes-Benz</option>
+              <option value="toyota">Toyota</option>
+              <option value="honda">Honda</option>
+              <option value="volkswagen">Volkswagen</option>
+              <option value="ford">Ford</option>
+              <option value="nissan">Nissan</option>
+              <option value="hyundai">Hyundai</option>
+              <option value="kia">Kia</option>
+              <option value="mazda">Mazda</option>
+              <option value="chevrolet">Chevrolet</option>
+              <option value="subaru">Subaru</option>
+              <option value="peugeot">Peugeot</option>
+              <option value="fiat">Fiat</option>
+            </select>
           </div>
           <div>
             <label htmlFor="year">Год випуску авто:</label>
@@ -148,14 +148,14 @@ function Announce() {
           </div>
         </div>
         <div className="container-search">
-        <div className="search-bar">
+          <div className="search-bar">
             {/* Поисковая строка */}
             <input type="text" placeholder="Поиск..." />
             <button>Найти</button>
           </div>
           <div className="popular-offers">
             {/* Блок с популярными предложениями */}
-            {/* {announces.map((announce) => (
+            {announce && (
               <div className="container">
                 <div className="block" key={announce.id}>
                   <img src={announce.imageURL} alt="image" />
@@ -167,7 +167,7 @@ function Announce() {
                   </div>
                 </div>
               </div>
-            ))} */}
+            ))}
           </div>
         </div>
       </div>
