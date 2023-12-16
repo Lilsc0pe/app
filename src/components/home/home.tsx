@@ -3,8 +3,11 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Link } from "react-router-dom";
 import "./home.css";
+import AdminAnnounce from "../admin/AdminAnounce"; // Импорт AdminAnnounce
 
-interface Item {
+
+
+export interface Item {
   imageURL: string;
   id: string;
   name: string;
@@ -30,6 +33,8 @@ function Home() {
     fetchData();
   }, []);
 
+  const filteredItems = items.filter((item) => item.id );
+
   return (
     <form className="form-home">
       <header className="header">
@@ -48,6 +53,9 @@ function Home() {
           </ul>
         </nav>
       </header>
+      {filteredItems.map((item) => (
+        <AdminAnnounce key={item.id} item={item} /> 
+      ))}
       {items.map((item) => (
         <Link to={`/announce/${item.id}`} key={item.id}>
           <div className="container">
@@ -68,3 +76,7 @@ function Home() {
 }
 
 export default Home;
+function useParams<T>(): { id: any; } {
+  throw new Error("Function not implemented.");
+}
+
