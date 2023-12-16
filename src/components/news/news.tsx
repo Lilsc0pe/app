@@ -54,7 +54,7 @@ function news() {
             <form>
               <div className="text-container">
                 <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX626oExz_QvgK2pTYB9k1IShrSzfTwhsbgKAxdXxU2g&s"
+                  src="car1.png"
                   alt="Example Image"
                 />
               </div>
@@ -70,7 +70,7 @@ function news() {
             <form>
               <div className="text-container">
                 <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6RZqrMA2Vz1C6IXjG-DrJjk0QHdHGgBCUrK3wJacNQA&s"
+                  src="car2.png"
                   alt="Example Image"
                 />
               </div>
@@ -86,7 +86,7 @@ function news() {
             <form>
               <div className="text-container">
                 <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTp2ZOLwa3rgbjXJ2vKywdaGMFdgMG6S1e0HIZOhsY4jw&s"
+                  src="car3.png"
                   alt="Example Image"
                 />
               </div>
