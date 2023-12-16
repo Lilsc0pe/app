@@ -1,111 +1,37 @@
-.main-content {
-  background-color: #faab00;
-  display: flex; /* Изменение на flex для выравнивания блоков */
-  justify-content: space-between; /* Равное расстояние между блоками */
-  align-items: flex-start; /* Выравнивание элементов по верхнему краю */
-  padding: 20px; /* Придаем отступы для контейнера .main-content */
-}
-
-.search-bar {
+.container-announce {
   display: flex;
-  flex-direction: row; /* Изменение на row для размещения элементов в одну строку */
-  margin: 15px;
-  width: auto;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.search-bar input[type="text"] {
-  box-sizing: border-box;
-  padding: 8px;
-  border-radius: 25px;
-  outline: none;
-  border: 1px solid #ddd;
-  flex: 3; /* Задаем ширину в соотношении 3 к 1 */
+.container-announce .block {
+  display: flex;
+  align-items: flex-start;
 }
 
-.search-bar button {
-  box-sizing: border-box;
-  padding: 8px;
-  border-radius: 25px;
-  outline: none;
-  border: 1px solid #ddd;
-  flex: 1; /* Задаем ширину в соотношении 1 к 3 */
+.container-announce .block img {
+  width: 200px;
+  margin-right: 20px;
 }
 
-.container-search {
-  margin: 15px;
-  width: 26.3cm;
-  /* max-height: 600px; Максимальная высота для прокрутки */
-  /*overflow-y: auto; Включаем вертикальную прокрутку */
-}
-
-.search-bar {
+.container-announce .block .text-container {
   display: flex;
   flex-direction: column;
-  margin: 15px;
-  width: auto;
 }
 
-.search-bar input[type="text"],
-.search-bar button {
-  box-sizing: border-box;
-  padding: 8px;
-  border-radius: 25px;
-  outline: none;
-  border: 1px solid #ddd;
+.container-announce .block .text-container h2 {
+  margin-bottom: 10px;
 }
 
-.search-bar button {
+.container-announce .block .text-container p {
+  margin-bottom: 5px;
+}
+
+.container-announce .block .text-container a {
   margin-top: 10px;
   padding: 8px 15px;
   border: none;
   background-color: #4caf50;
   color: #fff;
-  cursor: pointer;
+  text-decoration: none;
 }
-
-.filters {
-  flex-direction: column;
-  background-color: #d9d9d9;
-  margin: 15px;
-  border-radius: 25px;
-  min-width: 250px;
-  padding: 20px;
-  -webkit-box-shadow: 0px 8px 19px -5px rgba(34, 60, 80, 0.26);
-  -moz-box-shadow: 0px 8px 19px -5px rgba(34, 60, 80, 0.26);
-  box-shadow: 0px 8px 19px -5px rgba(34, 60, 80, 0.26);
-}
-
-.filters div {
-  margin-bottom: 15px;
-}
-
-.filters label {
-  display: block;
-  margin-bottom: 5px;
-}
-.filters input[type="text"],
-.filters select {
-  width: 90%;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  outline: none;
-}
-
-.filters select {
-  padding: 8px 5px; /* Коррекция отступов для выпадающего списка */
-}
-
-/* .main-content::-webkit-scrollbar {
-  width: 8px;
-}
-
-.main-content::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 4px;
-}
-
-.main-content::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
-} */
