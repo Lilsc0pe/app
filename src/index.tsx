@@ -1,16 +1,18 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { LanguageProvider } from "./contexts/LanguageContext"; // import LanguageProvider from LanguageContext
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
-root.render(
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <LanguageProvider> {/* Wrap App with LanguageProvider */}
+      <App />
+    </LanguageProvider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
 
 reportWebVitals();
+export {}; // add this line at the end of the file
