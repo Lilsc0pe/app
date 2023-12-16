@@ -171,12 +171,6 @@ interface announce {
 
 function Announce() {
   const languageContext = useContext(LanguageContext);
-
-  if (!languageContext) {
-    return null; // or handle the case where the context is undefined
-  }
-
-  const { language } = languageContext;
   const { id } = useParams<{ id: string }>();
   const [announce, setannounce] = useState<announce | null>(null);
 
@@ -189,6 +183,12 @@ function Announce() {
 
     fetchData();
   }, [id]);
+
+  if (!languageContext) {
+    return null; // or handle the case where the context is undefined
+  }
+
+  const { language } = languageContext;
 
   return (
     <form className="form-home">
