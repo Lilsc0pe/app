@@ -1,37 +1,114 @@
-.container-announce {
+.header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #575757;
+  border-radius: 7px;
+  color: white;
+}
+
+.form-home {
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  width: 1300px;
+  margin: 0 auto;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.container-announce .block {
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 
-.container-announce .block img {
-  width: 200px;
-  margin-right: 20px;
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
 }
 
-.container-announce .block .text-container {
+.nav-links li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.main-content{
+  background-color: #faab00;
+  height: auto;
+  width: auto;
+  min-height: 420px;
+}
+
+
+
+.search-bar {
   display: flex;
   flex-direction: column;
+  margin: 15px 0px 15px 15px;
+  width: 26.4cm;
+  float: left;
 }
 
-.container-announce .block .text-container h2 {
-  margin-bottom: 10px;
-}
 
-.container-announce .block .text-container p {
-  margin-bottom: 5px;
+.search-bar input[type="text"],
+.search-bar button {
+  box-sizing: border-box;
+  padding: 8px;
+  border-radius: 25px;
+  outline: none;
 }
-
-.container-announce .block .text-container a {
-  margin-top: 10px;
+.search-bar button {
   padding: 8px 15px;
   border: none;
-  background-color: #4caf50;
+  background-color: #007bff;
   color: #fff;
-  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+.filters{
+  flex-direction: column;
+  background-color: #D9D9D9;
+  margin: 15px;
+  border-radius: 25px;
+  float: right;
+  min-width: 250px;
+}
+
+h3{
+  display: flex;
+  justify-content: center;
+}
+
+.filter-label{
+  margin: 13px;
+}
+
+
+.filters input[type="text"] {
+  max-width: 93%;
+}
+
+
+.popular-offers{
+  background-color: aqua;
 }

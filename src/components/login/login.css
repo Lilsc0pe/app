@@ -31,7 +31,7 @@ body {
   margin-bottom: 5px;
  }
  
- .form-registration-login-profile input {
+ input {
   width: 100%;
   padding: 5px;
   margin-bottom: 10px;
@@ -39,7 +39,7 @@ body {
   border-radius: 3px;
  }
  
- .button-login-registration button {
+ button {
   width: 100%;
   padding: 5px;
   background-color: #4CAF50;
@@ -50,7 +50,7 @@ body {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
  }
  
- .button-login-registration button:hover {
+ button:hover {
   background-color: #45a049;
  }
  
