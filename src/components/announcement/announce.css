@@ -1,28 +1,72 @@
-.main-content {
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #575757;
+  border-radius: 7px;
+  color: white;
+}
+
+.form-home {
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  width: 1300px;
+  margin: 0 auto;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.main-content{
   background-color: #faab00;
-  display: flex; /* Изменение на flex для выравнивания блоков */
-  justify-content: space-between; /* Равное расстояние между блоками */
-  align-items: flex-start; /* Выравнивание элементов по верхнему краю */
-  padding: 20px; /* Придаем отступы для контейнера .main-content */
+  height: auto;
+  width: auto;
+  min-height: 420px;
 }
 
 
-
-
-.container-search {
-  margin: 15px;
-  width: 26.3cm;
-  /* max-height: 600px; Максимальная высота для прокрутки */
-  /*overflow-y: auto; Включаем вертикальную прокрутку */
-}
 
 .search-bar {
   display: flex;
   flex-direction: column;
-  margin: 15px;
-  width: auto;
-  
+  margin: 15px 0px 15px 15px;
+  width: 26.4cm;
+  float: left;
 }
+
 
 .search-bar input[type="text"],
 .search-bar button {
@@ -30,67 +74,41 @@
   padding: 8px;
   border-radius: 25px;
   outline: none;
-  border: 1px solid #ddd;
 }
-
 .search-bar button {
-  margin-top: 10px;
   padding: 8px 15px;
   border: none;
-  background-color: #4CAF50;
+  background-color: #007bff;
   color: #fff;
   cursor: pointer;
 }
 
 
 
-.filters {
+.filters{
   flex-direction: column;
-  background-color: #d9d9d9;
+  background-color: #D9D9D9;
   margin: 15px;
   border-radius: 25px;
+  float: right;
   min-width: 250px;
-  padding: 20px; 
-  -webkit-box-shadow: 0px 8px 19px -5px rgba(34, 60, 80, 0.26);
-  -moz-box-shadow: 0px 8px 19px -5px rgba(34, 60, 80, 0.26);
-  box-shadow: 0px 8px 19px -5px rgba(34, 60, 80, 0.26);
 }
 
-.filters div {
-  margin-bottom: 15px; 
+h3{
+  display: flex;
+  justify-content: center;
 }
 
-.filters label {
-  display: block;
-  margin-bottom: 5px;
-}
-.filters input[type="text"],
-.filters select {
-  width: 90%; 
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  outline: none;
-}
-
-.filters select {
-  padding: 8px 5px; /* Коррекция отступов для выпадающего списка */
+.filter-label{
+  margin: 13px;
 }
 
 
-
-
-/* .main-content::-webkit-scrollbar {
-  width: 8px;
+.filters input[type="text"] {
+  max-width: 93%;
 }
 
-.main-content::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 4px;
+
+.popular-offers{
+  background-color: aqua;
 }
-
-.main-content::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
-} */
-
