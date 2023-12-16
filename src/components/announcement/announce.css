@@ -6,8 +6,30 @@
   padding: 20px; /* Придаем отступы для контейнера .main-content */
 }
 
+.search-bar {
+  display: flex;
+  flex-direction: row; /* Изменение на row для размещения элементов в одну строку */
+  margin: 15px;
+  width: auto;
+}
 
+.search-bar input[type="text"] {
+  box-sizing: border-box;
+  padding: 8px;
+  border-radius: 25px;
+  outline: none;
+  border: 1px solid #ddd;
+  flex: 3; /* Задаем ширину в соотношении 3 к 1 */
+}
 
+.search-bar button {
+  box-sizing: border-box;
+  padding: 8px;
+  border-radius: 25px;
+  outline: none;
+  border: 1px solid #ddd;
+  flex: 1; /* Задаем ширину в соотношении 1 к 3 */
+}
 
 .container-search {
   margin: 15px;
@@ -21,7 +43,6 @@
   flex-direction: column;
   margin: 15px;
   width: auto;
-  
 }
 
 .search-bar input[type="text"],
@@ -37,12 +58,10 @@
   margin-top: 10px;
   padding: 8px 15px;
   border: none;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: #fff;
   cursor: pointer;
 }
-
-
 
 .filters {
   flex-direction: column;
@@ -50,14 +69,14 @@
   margin: 15px;
   border-radius: 25px;
   min-width: 250px;
-  padding: 20px; 
+  padding: 20px;
   -webkit-box-shadow: 0px 8px 19px -5px rgba(34, 60, 80, 0.26);
   -moz-box-shadow: 0px 8px 19px -5px rgba(34, 60, 80, 0.26);
   box-shadow: 0px 8px 19px -5px rgba(34, 60, 80, 0.26);
 }
 
 .filters div {
-  margin-bottom: 15px; 
+  margin-bottom: 15px;
 }
 
 .filters label {
@@ -66,7 +85,7 @@
 }
 .filters input[type="text"],
 .filters select {
-  width: 90%; 
+  width: 90%;
   padding: 8px;
   border-radius: 5px;
   border: 1px solid #ccc;
@@ -77,9 +96,6 @@
 .filters select {
   padding: 8px 5px; /* Коррекция отступов для выпадающего списка */
 }
-
-
-
 
 /* .main-content::-webkit-scrollbar {
   width: 8px;
@@ -93,4 +109,3 @@
 .main-content::-webkit-scrollbar-track {
   background-color: #f1f1f1;
 } */
-

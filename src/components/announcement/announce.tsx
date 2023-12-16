@@ -4,7 +4,7 @@ import { db } from "../../firebase";
 import { Link, useParams } from "react-router-dom";
 import "./announce.css";
 
-interface Item_2 {
+interface announce {
   imageURL: string;
   id: string;
   name: string;
@@ -14,14 +14,14 @@ interface Item_2 {
 }
 
 function Announce() {
-  const { id } = useParams();
-  const [announce, setItem] = useState<Item_2 | null>(null);
+  const { id } = useParams<{ id: string }>();
+  const [announce, setannounce] = useState<announce | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const itemDoc = await getDoc(doc(db, "announce", id as string));
-      const data = { id: itemDoc.id, ...itemDoc.data() } as Item_2;
-      setItem(data);
+      const announceDoc = await getDoc(doc(db, "announce", id as string));
+      const data = { id: announceDoc.id, ...announceDoc.data() } as announce;
+      setannounce(data);
     };
 
     fetchData();
@@ -50,7 +50,6 @@ function Announce() {
       </header>
       <div className="main-content">
         <div className="filters">
-          {/* Фильтры */}
           <h3>Фильтры</h3>
           <div>
             <label htmlFor="brand">Марка авто:</label>
@@ -96,7 +95,6 @@ function Announce() {
             <select id="fuelType">
               <option value="petrol">Бензин</option>
               <option value="diesel">Дизель</option>
-              {/* Другие варианты топлива */}
             </select>
           </div>
           <div>
@@ -104,7 +102,6 @@ function Announce() {
             <select id="seats">
               <option value="2">2</option>
               <option value="4">4</option>
-              {/* Другие варианты количества мест */}
             </select>
           </div>
           <div>
@@ -143,31 +140,24 @@ function Announce() {
               <option value="north">Чернівецька</option>
               <option value="south">Чернігівська</option>
               <option value="north">Крим</option>
-              {/* Другие варианты регионов */}
             </select>
           </div>
         </div>
-        <div className="container-search">
-          <div className="search-bar">
-            {/* Поисковая строка */}
-            <input type="text" placeholder="Поиск..." />
-            <button>Найти</button>
+        <div className="container">
+          <div className="block">
+            <img src={announce?.imageURL} alt="image" />
+            <div className="text-container">
+              <h2>{announce?.name}</h2>
+              <p>{announce?.text_1}</p>
+              <p>{announce?.text_2}</p>
+              <p>{announce?.text_3}</p>
+            </div>
           </div>
-          <div className="popular-offers">
-            {/* Блок с популярными предложениями */}
-            {announce && (
-              <div className="container">
-                <div className="block" key={announce.id}>
-                  <img src={announce.imageURL} alt="image" />
-                  <div className="text-container">
-                    <h2>{announce.name}</h2>
-                    <p>{announce.text_1}</p>
-                    <p>{announce.text_2}</p>
-                    <p>{announce.text_3}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="container-search">
+            <div className="search-bar">
+              <input type="text" placeholder="Поиск..." />
+              <button>Найти</button>
+            </div>
           </div>
         </div>
       </div>
