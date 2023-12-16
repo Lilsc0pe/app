@@ -92,11 +92,10 @@ function Register() {
             </svg>
           </div>
         </div>
-        
-        <div className="button-login-registration"> 
-          <button onClick={onSubmit}>Sign up</button>
-        </div>
-        
+
+        <button type="submit" onClick={onSubmit}>
+          Sign up
+        </button>
 
         <div className="login-question">Do have an account yet?</div>
         <Link className="nav-page" to="/login">
