@@ -15,11 +15,11 @@ interface Item {
 
 function Announce() {
   const { id } = useParams();
-  const [item, setItem] = useState<Item | null>(null);
+  const [announce, setItem] = useState<Item | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const itemDoc = await getDoc(doc(db, "home", id as string));
+      const itemDoc = await getDoc(doc(db, "announce", id as string));
       const data = { id: itemDoc.id, ...itemDoc.data() } as Item;
       setItem(data);
     };
@@ -33,6 +33,9 @@ function Announce() {
         <div className="logo">AutoScout</div>
         <nav className="navbar">
           <ul className="nav-links">
+          <li>
+              <Link to="/announce">Оголошення</Link>
+            </li>
             <li>
               <Link to="/news">Новини</Link>
             </li>
@@ -45,51 +48,127 @@ function Announce() {
           </ul>
         </nav>
       </header>
-
       <div className="main-content">
-        <div className="search-bar">
-          {/* Поисковая строка */}
-          <input type="text" placeholder="Поиск..." />
-          <button>Найти</button>
-        </div>
         <div className="filters">
           {/* Фильтры */}
           <h3>Фильтры</h3>
-          <div className="filter-label">
-            <div>
-              <label htmlFor="year">Год выпуска:</label>
-              <input type="text" id="year" />
-            </div>
-            <div>
-              <label htmlFor="series">Серия авто:</label>
-              <input type="text" id="series" />
-            </div>
-            <div>
-              <label htmlFor="mileage">Пробег:</label>
-              <input type="text" id="mileage" />
-            </div>
-            <div>
-              <label htmlFor="status">Статус авто:</label>
-              <select id="status">
-                <option value="new">Новый</option>
-                <option value="used">Б/у</option>
-              </select>
-            </div>
+          <div>
+               <label htmlFor="brand">Марка авто:</label>
+             <select id="brand">
+           <option value="audi">Audi</option>
+           <option value="bmw">BMW</option>
+           <option value="mercedes">Mercedes-Benz</option>
+           <option value="toyota">Toyota</option>
+           <option value="honda">Honda</option>
+           <option value="volkswagen">Volkswagen</option>
+           <option value="ford">Ford</option>
+           <option value="nissan">Nissan</option>
+          <option value="hyundai">Hyundai</option>
+          <option value="kia">Kia</option>
+          <option value="mazda">Mazda</option>
+          <option value="chevrolet">Chevrolet</option>
+          <option value="subaru">Subaru</option>
+          <option value="peugeot">Peugeot</option>
+          <option value="fiat">Fiat</option>
+             </select>
+          </div>
+          <div>
+            <label htmlFor="year">Год випуску авто:</label>
+            <input type="text" id="year" />
+          </div>
+          <div>
+            <label htmlFor="status">Статус авто:</label>
+            <select id="status">
+              <option value="new">Новий</option>
+              <option value="used">Б/у</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="mileageFrom">Пробіг від:</label>
+            <input type="text" id="mileageFrom" placeholder="Від, км" />
+          </div>
+          <div>
+            <label htmlFor="mileageTo">Пробіг до:</label>
+            <input type="text" id="mileageTo" placeholder="До, км" />
+          </div>
+          <div>
+            <label htmlFor="fuelType">Тип палива:</label>
+            <select id="fuelType">
+              <option value="petrol">Бензин</option>
+              <option value="diesel">Дизель</option>
+              {/* Другие варианты топлива */}
+            </select>
+          </div>
+          <div>
+            <label htmlFor="seats">Кількість місць:</label>
+            <select id="seats">
+              <option value="2">2</option>
+              <option value="4">4</option>
+              {/* Другие варианты количества мест */}
+            </select>
+          </div>
+          <div>
+            <label htmlFor="engineVolumeFrom">Об'єм двигуна від:</label>
+            <input type="text" id="engineVolumeFrom" placeholder="Від, л" />
+          </div>
+          <div>
+            <label htmlFor="engineVolumeTo">Объем двигателя до:</label>
+            <input type="text" id="engineVolumeTo" placeholder="До, л" />
+          </div>
+          <div>
+            <label htmlFor="region">Регіон авто:</label>
+            <select id="region">
+              <option value="north">Вінницька</option>
+              <option value="south">Волинська</option>
+              <option value="north">Дніпропетровська</option>
+              <option value="south">Донецька</option>
+              <option value="north">Житомирська</option>
+              <option value="south">Закарпаття</option>
+              <option value="north">Запорізька</option>
+              <option value="south">Івано-Франківська</option>
+              <option value="north">Київська</option>
+              <option value="south">Кировоградська</option>
+              <option value="north">Луганська</option>
+              <option value="south">Львівська</option>
+              <option value="north">Миколаївська</option>
+              <option value="south">Одеська</option>
+              <option value="north">Полтавська</option>
+              <option value="south">Рівненьска</option>
+              <option value="north">Сумська</option>
+              <option value="south">Тернопільска</option>
+              <option value="north">Харківська</option>
+              <option value="south">Херсонська</option>
+              <option value="north">Хмельницька</option>
+              <option value="south">Черкаська</option>
+              <option value="north">Чернівецька</option>
+              <option value="south">Чернігівська</option>
+              <option value="north">Крим</option>
+              {/* Другие варианты регионов */}
+            </select>
           </div>
         </div>
-        <div className="popular-offers">
-          {/* Блок с популярными предложениями */}
-          {item && (
-            <div className="announce">
-              <img src={item.imageURL} alt="image" />
-              <div className="text-container">
-                <h2>{item.name}</h2>
-                <p>{item.text_1}</p>
-                <p>{item.text_2}</p>
-                <p>{item.text_3}</p>
+        <div className="container-search">
+        <div className="search-bar">
+            {/* Поисковая строка */}
+            <input type="text" placeholder="Поиск..." />
+            <button>Найти</button>
+          </div>
+          <div className="popular-offers">
+            {/* Блок с популярными предложениями */}
+            {/* {announces.map((announce) => (
+              <div className="container">
+                <div className="block" key={announce.id}>
+                  <img src={announce.imageURL} alt="image" />
+                  <div className="text-container">
+                    <h2>{announce.name}</h2>
+                    <p>{announce.text_1}</p>
+                    <p>{announce.text_2}</p>
+                    <p>{announce.text_3}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          )}
+            ))} */}
+          </div>
         </div>
       </div>
     </form>
