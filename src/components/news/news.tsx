@@ -1,7 +1,9 @@
-import React, { useState, useEffect, ReactNode } from "react";
+import React, { useState, useEffect, ReactNode, useContext } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Link } from "react-router-dom";
+import { LanguageContext } from '../../contexts/LanguageContext'; // adjust the path as needed
+import LanguageSwitchButton from '../../contexts/LanguageSwitchButton'; // Adjust the path as needed
 import "./news.css";
 
 interface News {
@@ -13,6 +15,7 @@ interface News {
 
 function News() {
   const [news, setNews] = useState<News[]>([]);
+  const languageContext = useContext(LanguageContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,22 +31,42 @@ function News() {
     fetchData();
   }, []);
 
+  if (!languageContext) {
+    return null; // or handle the case where the context is undefined
+  }
+
+  const { language } = languageContext;
+
+  const translations = {
+    ua: {
+      home: 'Головна',
+      login: 'Вхід',
+      register: 'Регістрація',
+    },
+    en: {
+      home: 'Home',
+      login: 'Login',
+      register: 'Register',
+    },
+  };
+
   return (
     <form className="form-home">
       <header className="header">
         <div className="logo">AutoScout</div>
         <nav className="navbar">
           <ul className="nav-links">
-            <li>
-              <Link to="/home">Головна</Link>
+          <li>
+              <Link to="/home">{translations[language as keyof typeof translations].home}</Link>
             </li>
             <li>
-              <Link to="/login">Вхід</Link>
+              <Link to="/login">{translations[language as keyof typeof translations].login}</Link>
             </li>
             <li>
-              <Link to="/register">Регістрація</Link>
+              <Link to="/register">{translations[language as keyof typeof translations].register}</Link>
             </li>
           </ul>
+          <LanguageSwitchButton /> {/* Use LanguageSwitchButton */}
         </nav>
       </header>
       {news.map((News) => (
