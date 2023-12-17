@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Link } from "react-router-dom";
 import "./home.css";
 import AdminAnnounce from "../admin/AdminAnounce"; // Импорт AdminAnnounce
+import { LanguageContext } from '../../contexts/LanguageContext'; // adjust the path as needed
+import LanguageSwitchButton from '../../contexts/LanguageSwitchButton'; // Adjust the path as needed
 
 
 
@@ -18,6 +20,7 @@ export interface Item {
 
 function Home() {
   const [items, setItems] = useState<Item[]>([]);
+  const languageContext = useContext(LanguageContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,6 +36,26 @@ function Home() {
     fetchData();
   }, []);
 
+  if (!languageContext) {
+    return null; // or handle the case where the context is undefined
+  }
+
+  const { language } = languageContext;
+
+  const translations = {
+    ua: {
+      news: 'Новини',
+      login: 'Вхід',
+      register: 'Регістрація',
+    },
+    en: {
+      news: 'News',
+      login: 'Login',
+      register: 'Register',
+    },
+  };
+
+
   const filteredItems = items.filter((item) => item.id );
 
   return (
@@ -41,15 +64,16 @@ function Home() {
         <div className="logo">AutoScout</div>
         <nav className="navbar">
           <ul className="nav-links">
-            <li>
-              <Link to="/news">Новини</Link>
+             <li>
+              <Link to="/news">{translations[language as keyof typeof translations].news}</Link>
             </li>
             <li>
-              <Link to="/login">Вхід</Link>
+              <Link to="/login">{translations[language as keyof typeof translations].login}</Link>
             </li>
             <li>
-              <Link to="/register">Регістрація</Link>
+              <Link to="/register">{translations[language as keyof typeof translations].register}</Link>
             </li>
+            <LanguageSwitchButton /> {/* Use LanguageSwitchButton */}
           </ul>
         </nav>
       </header>
