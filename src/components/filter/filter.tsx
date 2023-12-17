@@ -202,23 +202,25 @@ function Filter() {
   const { language } = languageContext;
 
   return (
-    <form className="form-home">
-      <header className="header">
+    <form className="form-home-filter">
+      <header className="header-filter">
         <div className="logo">AutoScout</div>
         <nav className="navbar">
           <ul className="nav-links">
             <li>
               <Link to="/news">{translations[language as keyof typeof translations].news}</Link>
             </li>
-            <li>
-              <Link to="/login">{translations[language as keyof typeof translations].login}</Link>
-            </li>
-            <li>
-              <Link to="/register">{translations[language as keyof typeof translations].register}</Link>
-            </li>
           </ul>
         </nav>
-        <LanguageSwitchButton /> {/* Add LanguageSwitchButton */}
+        <div className="auth-lang-selector">
+          <LanguageSwitchButton /> {/* Add LanguageSwitchButton */}
+          <li>
+            <Link to="/login">{translations[language as keyof typeof translations].login}</Link>
+          </li>
+          <li>
+            <Link to="/register">{translations[language as keyof typeof translations].register}</Link>
+          </li>
+        </div>
       </header>
       <div className="main-content">
         <div className="filters">

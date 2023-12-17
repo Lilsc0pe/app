@@ -34,7 +34,7 @@ function Login() {
       <form className="form-registration-login-profile">
         <div>
           <label htmlFor="email-address">Email address</label>
-          <input
+          <input className="input-auth"
             id="email-address"
             name="email"
             type="email"
@@ -47,7 +47,7 @@ function Login() {
         <div>
           <label htmlFor="password">Password</label>
           <div className="password_input_container">
-            <input
+          <input className="input-auth"
               id="password"
               name="password"
               type={isPasswordVisible ? "text" : "password"}
@@ -71,10 +71,9 @@ function Login() {
             </svg>
           </div>
         </div>
-
-        <div>
-          <button onClick={onLogin}>Login</button>
-        </div>
+        <button className="button-auth" type="submit" onClick={onLogin}>
+          Login
+        </button>
 
         <div className="login-question">Don't have an account yet?</div>
         <Link className="nav-page" to="/register">

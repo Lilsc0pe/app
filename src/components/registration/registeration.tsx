@@ -46,7 +46,7 @@ function Register() {
       <form className="form-registration-login-profile">
         <div>
           <label htmlFor="email-address">Name</label>
-          <input
+          <input className="input-auth"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -56,7 +56,7 @@ function Register() {
         </div>
         <div>
           <label htmlFor="email-address">Email address</label>
-          <input
+          <input className="input-auth"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -68,7 +68,7 @@ function Register() {
         <div>
           <label htmlFor="password">Password</label>
           <div className="password_input_container">
-            <input
+            <input className="input-auth"
               id="password"
               name="password"
               type={isPasswordVisible ? "text" : "password"}
@@ -93,7 +93,7 @@ function Register() {
           </div>
         </div>
 
-        <button type="submit" onClick={onSubmit}>
+        <button className="button-auth" type="submit" onClick={onSubmit}>
           Sign up
         </button>
 

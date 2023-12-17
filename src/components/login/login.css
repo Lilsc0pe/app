@@ -21,27 +21,31 @@ body {
  
 
  .form-registration-login-profile{
-  width: 300px; 
-  padding: 20px;
+  width: 480px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgba(255, 255, 255, .2);
+  padding: 30px;
  }
 
 
  label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
  }
  
- input {
-  width: 100%;
-  padding: 5px;
-  margin-bottom: 10px;
+ .input-auth {
+  width: 95.5%;
+  padding: 10px;
+  margin-bottom: 20px;
   border: 1px solid #ddd;
   border-radius: 3px;
  }
  
- button {
+.button-auth {
   width: 100%;
-  padding: 5px;
+  padding: 10px;
   background-color: #4CAF50;
   color: white;
   border: none;
@@ -50,13 +54,13 @@ body {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
  }
  
- button:hover {
+.button-auth:hover {
   background-color: #45a049;
  }
  
  a {
   display: block;
-  margin-top: 10px;
+  margin-top: 20px;
   text-align: center;
   color: #000;
   text-decoration: none;
@@ -69,7 +73,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 200vh;
   width: 100%;
   background-color: rgb(85, 46, 46);
 }
@@ -78,13 +82,13 @@ body {
 }
 .password_eye {
   position: absolute;
-  width: 15px;
-  height: 20px;
-  right: -3px;
-  top: 4px;
+  width: 23px;
+  height: 40px;
+  right: 8px;
+  top: 0px;
 }
 .nav-page{    
-  font-size: 15px;    
+  font-size: 20px;    
   display: flex;
   align-items: left;
   justify-content: right;
@@ -93,7 +97,7 @@ body {
   margin: 0px;
 }
 .login-question{
-  font-size: 13px;  
+  font-size: 16px;  
   margin-top: 15px; 
   display: flex;
   justify-content: right;
