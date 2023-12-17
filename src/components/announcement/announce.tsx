@@ -10,6 +10,9 @@ import "./announce.css";
 const translations = {
   ua: {
     // ...other translations...
+    news: 'Новини',
+      login: 'Вхід',
+      register: 'Регістрація',
     announceLink: 'Оголошення',
     newsLink: 'Новини',
     loginLink: 'Вхід',
@@ -81,9 +84,14 @@ const translations = {
       chernihivska: 'Чернігівська',
       krym: 'Крим',
     },
+    search: 'Пошук...',
+      find: 'Знайти',
   },
   en: {
     // ...other translations...
+    news: 'News',
+      login: 'Login',
+      register: 'Register',
     announceLink: 'Announce',
     newsLink: 'News',
     loginLink: 'Login',
@@ -155,6 +163,8 @@ const translations = {
       chernihivska: 'Chernihivska',
       krym: 'Krym',
     },
+    search: 'Search...',
+      find: 'Find',
   },
   
   
@@ -196,14 +206,14 @@ function Announce() {
         <div className="logo">AutoScout</div>
         <nav className="navbar">
           <ul className="nav-links">
-          <li>
-              <Link to="/news">Новини</Link>
+            <li>
+              <Link to="/news">{translations[language as keyof typeof translations].news}</Link>
             </li>
             <li>
-              <Link to="/login">Вхід</Link>
+              <Link to="/login">{translations[language as keyof typeof translations].login}</Link>
             </li>
             <li>
-              <Link to="/register">Регістрація</Link>
+              <Link to="/register">{translations[language as keyof typeof translations].register}</Link>
             </li>
           </ul>
         </nav>
@@ -316,8 +326,8 @@ function Announce() {
           </div>
           <div className="container-search">
             <div className="search-bar">
-              <input type="text" placeholder="Поиск..." />
-              <button>Найти</button>
+            <input type="text" placeholder={translations[language as keyof typeof translations].search} />
+            <button>{translations[language as keyof typeof translations].find}</button>
             </div>
           </div>
         </div>
