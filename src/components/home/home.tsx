@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db, auth } from "../../firebase";
 import { Link } from "react-router-dom";
 import "./home.css";
-import AdminAnnounce from "../admin/AdminAnounce"; // Импорт AdminAnnounce
-import { LanguageContext } from '../../contexts/LanguageContext'; // adjust the path as needed
-import LanguageSwitchButton from '../../contexts/LanguageSwitchButton'; // Adjust the path as needed
-
-
+import AdminAnnounce from "../admin/AdminAnounce";
+import { LanguageContext } from "../../contexts/LanguageContext";
+import LanguageSwitchButton from "../../contexts/LanguageSwitchButton";
 
 export interface Item {
   imageURL: string;
@@ -37,48 +35,64 @@ function Home() {
   }, []);
 
   if (!languageContext) {
-    return null; // or handle the case where the context is undefined
+    return null;
   }
 
   const { language } = languageContext;
 
   const translations = {
     ua: {
-      news: 'Новини',
-      login: 'Вхід',
-      register: 'Регістрація',
+      news: "Новини",
+      login: "Вхід",
+      register: "Регістрація",
     },
     en: {
-      news: 'News',
-      login: 'Login',
-      register: 'Register',
+      news: "News",
+      login: "Login",
+      register: "Register",
     },
   };
 
-
-  const filteredItems = items.filter((item) => item.id );
+  const filteredItems = items.filter((item) => item.id);
 
   return (
     <form className="form-home">
       <header className="header">
-        <div className="logo" >AutoScout</div>
+        <div className="logo">AutoScout</div>
         <nav className="navbar">
           <ul className="nav-links">
-             <li>
-              <Link to="/news">{translations[language as keyof typeof translations].news}</Link>
-            </li>
             <li>
-              <Link to="/login">{translations[language as keyof typeof translations].login}</Link>
+              <Link to="/news">
+                {translations[language as keyof typeof translations].news}
+              </Link>
             </li>
-            <li>
-              <Link to="/register">{translations[language as keyof typeof translations].register}</Link>
-            </li>
-            <LanguageSwitchButton /> {/* Use LanguageSwitchButton */}
+            {auth.currentUser ? (
+              <li>
+                <Link to="/profile">Profile</Link>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login">
+                    {translations[language as keyof typeof translations].login}
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/register">
+                    {
+                      translations[language as keyof typeof translations]
+                        .register
+                    }
+                  </Link>
+                </li>
+              </>
+            )}
+            <LanguageSwitchButton />
           </ul>
         </nav>
       </header>
       {filteredItems.map((item) => (
-        <AdminAnnounce key={item.id} item={item} /> 
+        <AdminAnnounce key={item.id} item={item} />
       ))}
       {items.map((item) => (
         <Link to={`/announce/${item.id}`} key={item.id}>
@@ -100,7 +114,3 @@ function Home() {
 }
 
 export default Home;
-function useParams<T>(): { id: any; } {
-  throw new Error("Function not implemented.");
-}
-
