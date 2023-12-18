@@ -63,19 +63,27 @@ function Home() {
       <header className="header">
         <div className="logo" >AutoScout</div>
         <nav className="navbar">
-          <ul className="nav-links">
-             <li>
-              <Link to="/news">{translations[language as keyof typeof translations].news}</Link>
-            </li>
+          <ul className="auth-lang-selector">
             <li>
-              <Link to="/login">{translations[language as keyof typeof translations].login}</Link>
+              <Link to="/news">
+                {translations[language as keyof typeof translations].news}
+              </Link>
             </li>
-            <li>
-              <Link to="/register">{translations[language as keyof typeof translations].register}</Link>
-            </li>
-            <LanguageSwitchButton /> {/* Use LanguageSwitchButton */}
           </ul>
         </nav>
+        <div className="auth-lang-selector nav-bar-auth">
+          <LanguageSwitchButton /> {}
+          <li>
+            <Link to="/login">
+              {translations[language as keyof typeof translations].login}
+            </Link>
+          </li>
+          <li>
+            <Link to="/register">
+              {translations[language as keyof typeof translations].register}
+            </Link>
+          </li>
+        </div>
       </header>
       {filteredItems.map((item) => (
         <AdminAnnounce key={item.id} item={item} /> 
