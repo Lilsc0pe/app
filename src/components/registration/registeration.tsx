@@ -6,8 +6,8 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../../firebase";
 import { addDoc, collection } from "firebase/firestore";
-import { LanguageContext } from '../../contexts/LanguageContext'; // adjust the path as needed
-import LanguageSwitchButton from '../../contexts/LanguageSwitchButton'; // Adjust the path as needed
+import { LanguageContext } from "../../contexts/LanguageContext"; // adjust the path as needed
+import LanguageSwitchButton from "../../contexts/LanguageSwitchButton"; // Adjust the path as needed
 
 function Register() {
   const navigate = useNavigate();
@@ -26,20 +26,20 @@ function Register() {
 
   const translations = {
     ua: {
-      name: 'Ім\'я',
-      emailAddress: 'Адреса електронної пошти',
-      password: 'Пароль',
-      signUp: 'Зареєструватися',
-      haveAccount: 'Вже маєте обліковий запис?',
-      login: 'Вхід',
+      name: "Ім'я",
+      emailAddress: "Адреса електронної пошти",
+      password: "Пароль",
+      signUp: "Зареєструватися",
+      haveAccount: "Вже маєте обліковий запис?",
+      login: "Вхід",
     },
     en: {
-      name: 'Name',
-      emailAddress: 'Email address',
-      password: 'Password',
-      signUp: 'Sign up',
-      haveAccount: 'Do have an account yet?',
-      login: 'Login',
+      name: "Name",
+      emailAddress: "Email address",
+      password: "Password",
+      signUp: "Sign up",
+      haveAccount: "Do have an account yet?",
+      login: "Login",
     },
   };
 
@@ -74,40 +74,55 @@ function Register() {
       <LanguageSwitchButton />
       <form className="form-registration-login-profile">
         <div>
-        <label htmlFor="name">{translations[language as keyof typeof translations].name}</label>
-          <input className="input-auth"
+          <label htmlFor="name">
+            {translations[language as keyof typeof translations].name}
+          </label>
+          <input
+            className="input-auth"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            placeholder={translations[language as keyof typeof translations].name}
+            placeholder={
+              translations[language as keyof typeof translations].name
+            }
           />
         </div>
         <div>
-        <label htmlFor="email-address">{translations[language as keyof typeof translations].emailAddress}</label>
-          <input className="input-auth"
+          <label htmlFor="email-address">
+            {translations[language as keyof typeof translations].emailAddress}
+          </label>
+          <input
+            className="input-auth"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            placeholder={translations[language as keyof typeof translations].emailAddress}
+            placeholder={
+              translations[language as keyof typeof translations].emailAddress
+            }
           />
         </div>
 
         <div>
-        <label htmlFor="password">{translations[language as keyof typeof translations].password}</label>
-          <div className="password_input_container">
-            <input className="input-auth"
+          <label htmlFor="password">
+            {translations[language as keyof typeof translations].password}
+          </label>
+          <div className="password-input-container">
+            <input
+              className="input-auth"
               id="password"
               name="password"
               type={isPasswordVisible ? "text" : "password"}
               required
-              placeholder={translations[language as keyof typeof translations].password}
+              placeholder={
+                translations[language as keyof typeof translations].password
+              }
               onChange={(e) => setPassword(e.target.value)}
             />
 
             <svg
-              className="password_eye"
+              className="password-eye"
               xmlns="http://www.w3.org/2000/svg"
               height="10"
               width="12"
@@ -123,12 +138,14 @@ function Register() {
         </div>
 
         <button className="button-auth" type="submit" onClick={onSubmit}>
-        {translations[language as keyof typeof translations].signUp}
+          {translations[language as keyof typeof translations].signUp}
         </button>
 
-        <div className="login-question">{translations[language as keyof typeof translations].haveAccount}</div>
+        <div className="login-question">
+          {translations[language as keyof typeof translations].haveAccount}
+        </div>
         <Link className="nav-page" to="/login">
-        {translations[language as keyof typeof translations].login}
+          {translations[language as keyof typeof translations].login}
         </Link>
       </form>
     </div>

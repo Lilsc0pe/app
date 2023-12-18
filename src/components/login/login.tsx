@@ -2,8 +2,8 @@ import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useContext } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
-import { LanguageContext } from '../../contexts/LanguageContext'; // adjust the path as needed
-import LanguageSwitchButton from '../../contexts/LanguageSwitchButton'; // Adjust the path as needed
+import { LanguageContext } from "../../contexts/LanguageContext"; // adjust the path as needed
+import LanguageSwitchButton from "../../contexts/LanguageSwitchButton"; // Adjust the path as needed
 import "./login.css";
 
 function Login() {
@@ -21,18 +21,18 @@ function Login() {
 
   const translations = {
     ua: {
-      emailAddress: 'Адреса електронної пошти',
-      password: 'Пароль',
-      login: 'Вхід',
-      dontHaveAccount: 'Ще немаєте облікового запису?',
-      signUp: 'Зареєструватися',
+      emailAddress: "Адреса електронної пошти",
+      password: "Пароль",
+      login: "Вхід",
+      dontHaveAccount: "Ще немаєте облікового запису?",
+      signUp: "Зареєструватися",
     },
     en: {
-      emailAddress: 'Email address',
-      password: 'Password',
-      login: 'Login',
+      emailAddress: "Email address",
+      password: "Password",
+      login: "Login",
       dontHaveAccount: "Don't have an account yet?",
-      signUp: 'Sign up',
+      signUp: "Sign up",
     },
   };
 
@@ -60,31 +60,41 @@ function Login() {
       <LanguageSwitchButton />
       <form className="form-registration-login-profile">
         <div>
-        <label htmlFor="email-address">{translations[language as keyof typeof translations].emailAddress}</label>
-          <input className="input-auth"
+          <label htmlFor="email-address">
+            {translations[language as keyof typeof translations].emailAddress}
+          </label>
+          <input
+            className="input-auth"
             id="email-address"
             name="email"
             type="email"
             required
-            placeholder={translations[language as keyof typeof translations].emailAddress}
+            placeholder={
+              translations[language as keyof typeof translations].emailAddress
+            }
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
         <div>
-        <label htmlFor="password">{translations[language as keyof typeof translations].password}</label>
-          <div className="password_input_container">
-          <input className="input-auth"
+          <label htmlFor="password">
+            {translations[language as keyof typeof translations].password}
+          </label>
+          <div className="password-input-container">
+            <input
+              className="input-auth"
               id="password"
               name="password"
               type={isPasswordVisible ? "text" : "password"}
               required
-              placeholder={translations[language as keyof typeof translations].password}
+              placeholder={
+                translations[language as keyof typeof translations].password
+              }
               onChange={(e) => setPassword(e.target.value)}
             />
 
             <svg
-              className="password_eye"
+              className="password-eye"
               xmlns="http://www.w3.org/2000/svg"
               height="10"
               width="12"
@@ -99,12 +109,14 @@ function Login() {
           </div>
         </div>
         <button className="button-auth" type="submit" onClick={onLogin}>
-        {translations[language as keyof typeof translations].login}
+          {translations[language as keyof typeof translations].login}
         </button>
 
-        <div className="login-question">{translations[language as keyof typeof translations].dontHaveAccount}</div>
+        <div className="login-question">
+          {translations[language as keyof typeof translations].dontHaveAccount}
+        </div>
         <Link className="nav-page" to="/register">
-        {translations[language as keyof typeof translations].signUp}
+          {translations[language as keyof typeof translations].signUp}
         </Link>
         {auth.currentUser !== null ? <Link to="/profile">Profile</Link> : <></>}
       </form>

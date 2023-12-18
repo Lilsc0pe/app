@@ -9,7 +9,7 @@
   border-radius: 5px;
   background: #ffff;
 }
-.header-filter{
+.header-filter {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,7 +18,7 @@
   border-radius: 7px 7px 7px 0;
   color: rgb(250, 255, 250);
 }
-.navbar li{
+.navbar li {
   margin: 10px;
   border-radius: 5px;
   background-color: #2f4f4f;
@@ -30,7 +30,6 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  
 }
 .auth-lang-selector li a {
   color: white;
@@ -38,23 +37,22 @@
   padding: 8px 16px;
   display: flex;
   align-items: center;
-  
 }
 .navbar li :hover {
   border-radius: 5px;
   background-color: #1c2f2f;
 }
-.nav-bar-auth li{
+.nav-bar-auth li {
   background-color: #2e4f3f;
   margin: 10px;
   border-radius: 5px;
   box-shadow: 0px 0px 36px 17px rgba(31, 41, 41, 0.2);
 }
-.nav-bar-auth li :hover{
+.nav-bar-auth li :hover {
   border-radius: 5px;
   background-color: #243f32;
 }
-.lang-switch-btn{
+.lang-switch-btn {
   position: relative;
   background: none;
   border: none;
@@ -64,7 +62,7 @@
   font-size: medium;
   padding: 8px 16px;
 }
-.lang-switch-btn img{
+.lang-switch-btn img {
   position: absolute;
   top: -8px;
   right: 16px;
@@ -72,16 +70,15 @@
   border-radius: 100%;
 }
 
-
-.main-content{
+.main-content {
   height: auto;
-  width: 100%; 
+  width: 100%;
   min-height: 420px;
   display: flex;
   flex-direction: row;
 }
 .filters {
-  background-color: #b4d0d0;;
+  background-color: #b4d0d0;
   border-radius: 0 0 15px 15px;
   padding: 10px;
   display: flex;
@@ -91,19 +88,18 @@
 }
 .filters input[type="text"],
 .filters select {
-  width: 190px; 
+  width: 190px;
   box-sizing: border-box;
   margin-bottom: 10px;
   outline: none;
-  padding: 5px; 
-  border: none; 
-  outline: none; 
+  padding: 5px;
+  border: none;
+  outline: none;
   background-color: #eeffff;
   border-radius: 5px;
 }
 
-
-.container-search-filter{
+.container-search-filter {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -118,7 +114,7 @@
   align-items: center;
 }
 
-.search-bar-filter input[type="text"]{
+.search-bar-filter input[type="text"] {
   width: 100%;
   height: 42px;
   padding-left: 10px;
