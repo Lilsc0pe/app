@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
+import { LanguageContext } from '../../contexts/LanguageContext'; // adjust the path as needed
+import LanguageSwitchButton from '../../contexts/LanguageSwitchButton'; // Adjust the path as needed
 import "./login.css";
 
 function Login() {
@@ -9,6 +11,30 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const languageContext = useContext(LanguageContext);
+
+  if (!languageContext) {
+    return null; // or handle the case where the context is undefined
+  }
+
+  const { language } = languageContext;
+
+  const translations = {
+    ua: {
+      emailAddress: 'Адреса електронної пошти',
+      password: 'Пароль',
+      login: 'Вхід',
+      dontHaveAccount: 'Ще немаєте облікового запису?',
+      signUp: 'Зареєструватися',
+    },
+    en: {
+      emailAddress: 'Email address',
+      password: 'Password',
+      login: 'Login',
+      dontHaveAccount: "Don't have an account yet?",
+      signUp: 'Sign up',
+    },
+  };
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -31,28 +57,29 @@ function Login() {
 
   return (
     <div>
+      <LanguageSwitchButton />
       <form className="form-registration-login-profile">
         <div>
-          <label htmlFor="email-address">Email address</label>
+        <label htmlFor="email-address">{translations[language as keyof typeof translations].emailAddress}</label>
           <input className="input-auth"
             id="email-address"
             name="email"
             type="email"
             required
-            placeholder="Email address"
+            placeholder={translations[language as keyof typeof translations].emailAddress}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
         <div>
-          <label htmlFor="password">Password</label>
+        <label htmlFor="password">{translations[language as keyof typeof translations].password}</label>
           <div className="password_input_container">
           <input className="input-auth"
               id="password"
               name="password"
               type={isPasswordVisible ? "text" : "password"}
               required
-              placeholder="Password"
+              placeholder={translations[language as keyof typeof translations].password}
               onChange={(e) => setPassword(e.target.value)}
             />
 
@@ -72,12 +99,12 @@ function Login() {
           </div>
         </div>
         <button className="button-auth" type="submit" onClick={onLogin}>
-          Login
+        {translations[language as keyof typeof translations].login}
         </button>
 
-        <div className="login-question">Don't have an account yet?</div>
+        <div className="login-question">{translations[language as keyof typeof translations].dontHaveAccount}</div>
         <Link className="nav-page" to="/register">
-          Sign up
+        {translations[language as keyof typeof translations].signUp}
         </Link>
         {auth.currentUser !== null ? <Link to="/profile">Profile</Link> : <></>}
       </form>

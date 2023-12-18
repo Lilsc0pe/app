@@ -2,10 +2,12 @@ import {
   createUserWithEmailAndPassword,
   updateCurrentUser,
 } from "firebase/auth";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth, db } from "../../firebase";
 import { addDoc, collection } from "firebase/firestore";
+import { LanguageContext } from '../../contexts/LanguageContext'; // adjust the path as needed
+import LanguageSwitchButton from '../../contexts/LanguageSwitchButton'; // Adjust the path as needed
 
 function Register() {
   const navigate = useNavigate();
@@ -14,6 +16,32 @@ function Register() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const languageContext = useContext(LanguageContext);
+
+  if (!languageContext) {
+    return null; // or handle the case where the context is undefined
+  }
+
+  const { language } = languageContext;
+
+  const translations = {
+    ua: {
+      name: 'Ім\'я',
+      emailAddress: 'Адреса електронної пошти',
+      password: 'Пароль',
+      signUp: 'Зареєструватися',
+      haveAccount: 'Вже маєте обліковий запис?',
+      login: 'Вхід',
+    },
+    en: {
+      name: 'Name',
+      emailAddress: 'Email address',
+      password: 'Password',
+      signUp: 'Sign up',
+      haveAccount: 'Do have an account yet?',
+      login: 'Login',
+    },
+  };
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -43,37 +71,38 @@ function Register() {
   };
   return (
     <div>
+      <LanguageSwitchButton />
       <form className="form-registration-login-profile">
         <div>
-          <label htmlFor="email-address">Name</label>
+        <label htmlFor="name">{translations[language as keyof typeof translations].name}</label>
           <input className="input-auth"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            placeholder="Name"
+            placeholder={translations[language as keyof typeof translations].name}
           />
         </div>
         <div>
-          <label htmlFor="email-address">Email address</label>
+        <label htmlFor="email-address">{translations[language as keyof typeof translations].emailAddress}</label>
           <input className="input-auth"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            placeholder="Email address"
+            placeholder={translations[language as keyof typeof translations].emailAddress}
           />
         </div>
 
         <div>
-          <label htmlFor="password">Password</label>
+        <label htmlFor="password">{translations[language as keyof typeof translations].password}</label>
           <div className="password_input_container">
             <input className="input-auth"
               id="password"
               name="password"
               type={isPasswordVisible ? "text" : "password"}
               required
-              placeholder="Password"
+              placeholder={translations[language as keyof typeof translations].password}
               onChange={(e) => setPassword(e.target.value)}
             />
 
@@ -94,12 +123,12 @@ function Register() {
         </div>
 
         <button className="button-auth" type="submit" onClick={onSubmit}>
-          Sign up
+        {translations[language as keyof typeof translations].signUp}
         </button>
 
-        <div className="login-question">Do have an account yet?</div>
+        <div className="login-question">{translations[language as keyof typeof translations].haveAccount}</div>
         <Link className="nav-page" to="/login">
-          Login
+        {translations[language as keyof typeof translations].login}
         </Link>
       </form>
     </div>
