@@ -57,7 +57,6 @@ function Login() {
 
   return (
     <div>
-      <LanguageSwitchButton />
       <form className="form-registration-login-profile">
         <div>
           <label htmlFor="email-address">
@@ -115,6 +114,7 @@ function Login() {
         <div className="login-question">
           {translations[language as keyof typeof translations].dontHaveAccount}
         </div>
+        <LanguageSwitchButton />
         <Link className="nav-page" to="/register">
           {translations[language as keyof typeof translations].signUp}
         </Link>

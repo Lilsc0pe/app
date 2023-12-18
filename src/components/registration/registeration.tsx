@@ -71,7 +71,6 @@ function Register() {
   };
   return (
     <div>
-      <LanguageSwitchButton />
       <form className="form-registration-login-profile">
         <div>
           <label htmlFor="name">
@@ -144,6 +143,7 @@ function Register() {
         <div className="login-question">
           {translations[language as keyof typeof translations].haveAccount}
         </div>
+        <LanguageSwitchButton />
         <Link className="nav-page" to="/login">
           {translations[language as keyof typeof translations].login}
         </Link>
