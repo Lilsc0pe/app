@@ -69,7 +69,7 @@ function Home() {
               <Link to="/login">Вхід</Link>
             </li>
             <li>
-              <Link to="/register">Регістрація</Link>
+              <Link to="/register">Реєстрація</Link>
             </li>
           </ul>
         </nav>

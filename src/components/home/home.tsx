@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db, auth } from "../../firebase";
 import { Link } from "react-router-dom";
-import "./home.css";
 import AdminAnnounce from "../admin/AdminAnounce";
+import "./home.css";
+//language
 import { LanguageContext } from "../../contexts/LanguageContext";
 import LanguageSwitchButton from "../../contexts/LanguageSwitchButton";
+import { translations } from "../../contexts/translations";
 
 export interface Item {
   imageURL: string;
@@ -39,47 +41,41 @@ function Home() {
   }
 
   const { language } = languageContext;
-
-  const translations = {
-    ua: {
-      news: "Новини",
-      login: "Вхід",
-      register: "Регістрація",
-    },
-    en: {
-      news: "News",
-      login: "Login",
-      register: "Register",
-    },
-  };
+  const currentTranslation =
+    translations[language as keyof typeof translations];
 
   const filteredItems = items.filter((item) => item.id);
 
   return (
     <form className="form-home">
-      <header className="header">
+      <header className="header-filter">
         <div className="logo">AutoScout</div>
         <nav className="navbar">
           <ul className="auth-lang-selector">
             <li>
-              <Link to="/news">
-                {translations[language as keyof typeof translations].news}
-              </Link>
+              <Link to="/news">{currentTranslation.news}</Link>
+            </li>
+            <li>
+              <Link to="/filter">{currentTranslation.filtersHeading}</Link>
             </li>
           </ul>
         </nav>
         <div className="auth-lang-selector nav-bar-auth">
-          <LanguageSwitchButton /> {}
-          <li>
-            <Link to="/login">
-              {translations[language as keyof typeof translations].login}
-            </Link>
-          </li>
-          <li>
-            <Link to="/register">
-              {translations[language as keyof typeof translations].register}
-            </Link>
-          </li>
+          <LanguageSwitchButton />
+          {auth.currentUser ? (
+            <li>
+              <Link to="/profile">{currentTranslation.profile}</Link>
+            </li>
+          ) : (
+            <>
+              <li>
+                <Link to="/login">{currentTranslation.login}</Link>
+              </li>
+              <li>
+                <Link to="/register">{currentTranslation.register}</Link>
+              </li>
+            </>
+          )}
         </div>
       </header>
       {filteredItems.map((item) => (
@@ -88,7 +84,7 @@ function Home() {
       {items.map((item) => (
         <Link to={`/announce/${item.id}`} key={item.id}>
           <div className="container">
-            <div className="-" key={item.id}>
+            <div key={item.id}>
               <img className="img-container" src={item.imageURL} alt="image" />
               <h2>{item.name}</h2>
               <div className="text-container-home">

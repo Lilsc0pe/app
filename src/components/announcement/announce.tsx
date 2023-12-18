@@ -1,10 +1,12 @@
 import { useState, useEffect, useContext } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db, auth } from "../../firebase";
 import { Link, useParams } from "react-router-dom";
-import { LanguageContext } from '../../contexts/LanguageContext'; // adjust the path as needed
-import LanguageSwitchButton from '../../contexts/LanguageSwitchButton'; // Adjust the path as needed
 import "./announce.css";
+//language
+import { LanguageContext } from "../../contexts/LanguageContext";
+import LanguageSwitchButton from "../../contexts/LanguageSwitchButton";
+import { translations } from "../../contexts/translations";
 
 interface Item {
   imageURL: string;
@@ -18,32 +20,18 @@ interface Item {
 interface AnnounceProps {
   item: Item;
 }
-function Announce({ item }: AnnounceProps) {
+
+function AnnounceItem({ item }: AnnounceProps) {
   const languageContext = useContext(LanguageContext);
-  
+
   if (!languageContext) {
     return null; // or handle the case where the context is undefined
   }
 
   const { language } = languageContext;
+  const currentTranslation =
+    translations[language as keyof typeof translations];
 
-  const translations = {
-    ua: {
-      goTo: 'Перейти',
-      home: 'Головна',
-      news: 'Новини',
-      login: 'Вхід',
-      register: 'Регістрація',
-    },
-    en: {
-      goTo: 'Go to',
-      home: 'Home',
-      news: 'News',
-      login: 'Login',
-      register: 'Register',
-    },
-  };
-  
   return (
     <div className="container-announce">
       <img src={item.imageURL} alt="image" />
@@ -54,7 +42,7 @@ function Announce({ item }: AnnounceProps) {
           <p>{item.text_2}</p>
           <p>{item.text_3}</p>
           <Link to={`/announce/${item.id}`} className="button">
-          {translations[language as keyof typeof translations].goTo}
+            {currentTranslation.goTo}
           </Link>
         </div>
       </div>
@@ -64,7 +52,7 @@ function Announce({ item }: AnnounceProps) {
 
 function Home() {
   const [items, setItems] = useState<Item[]>([]);
-  const { id } = useParams<{ id: string }>(); // Add this line to get the ID from the URL
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -80,30 +68,16 @@ function Home() {
     fetchData();
   }, []);
   const languageContext = useContext(LanguageContext);
-  
+
   if (!languageContext) {
-    return null; // or handle the case where the context is undefined
+    return null;
   }
 
   const { language } = languageContext;
+  const currentTranslation =
+    translations[language as keyof typeof translations];
 
-  const translations = {
-    ua: {
-      goTo: 'Перейти',
-      home: 'Головна',
-      news: 'Новини',
-      login: 'Вхід',
-      register: 'Регістрація',
-    },
-    en: {
-      goTo: 'Go to',
-      home: 'Home',
-      news: 'News',
-      login: 'Login',
-      register: 'Register',
-    },
-  };
-  const filteredItems = items.filter((item) => item.id === id); // Add this line to filter the items array based on the ID
+  const filteredItems = items.filter((item) => item.id === id);
 
   return (
     <form className="form-home">
@@ -112,25 +86,33 @@ function Home() {
         <nav className="navbar">
           <ul className="auth-lang-selector">
             <li>
-              <Link to="/home">{translations[language as keyof typeof translations].home}</Link>
+              <Link to="/home">{currentTranslation.home}</Link>
             </li>
             <li>
-              <Link to="/news">{translations[language as keyof typeof translations].news}</Link>
+              <Link to="/news">{currentTranslation.news}</Link>
             </li>
           </ul>
         </nav>
         <div className="auth-lang-selector nav-bar-auth">
-        <LanguageSwitchButton /> {}
+          <LanguageSwitchButton />
+          {auth.currentUser ? (
             <li>
-              <Link to="/login">{translations[language as keyof typeof translations].login}</Link>
+              <Link to="/profile">{currentTranslation.profile}</Link>
             </li>
-            <li>
-              <Link to="/register">{translations[language as keyof typeof translations].register}</Link>
-            </li>
+          ) : (
+            <>
+              <li>
+                <Link to="/login">{currentTranslation.login}</Link>
+              </li>
+              <li>
+                <Link to="/register">{currentTranslation.register}</Link>
+              </li>
+            </>
+          )}
         </div>
       </header>
       {filteredItems.map((item) => (
-        <Announce item={item} />
+        <AnnounceItem key={item.id} item={item} />
       ))}
     </form>
   );

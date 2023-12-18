@@ -1,10 +1,12 @@
-import React, { useState, useEffect, ReactNode, useContext } from "react";
+import { useState, useEffect, ReactNode, useContext } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db, auth } from "../../firebase";
 import { Link } from "react-router-dom";
-import { LanguageContext } from '../../contexts/LanguageContext'; // adjust the path as needed
-import LanguageSwitchButton from '../../contexts/LanguageSwitchButton'; // Adjust the path as needed
 import "./news.css";
+//language
+import { LanguageContext } from "../../contexts/LanguageContext";
+import LanguageSwitchButton from "../../contexts/LanguageSwitchButton";
+import { translations } from "../../contexts/translations";
 
 interface News {
   imageNewsURL: string;
@@ -15,7 +17,6 @@ interface News {
 
 function News() {
   const [news, setNews] = useState<News[]>([]);
-  const languageContext = useContext(LanguageContext);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,50 +32,42 @@ function News() {
     fetchData();
   }, []);
 
+  const languageContext = useContext(LanguageContext);
   if (!languageContext) {
-    return null; // or handle the case where the context is undefined
+    return null;
   }
 
   const { language } = languageContext;
-
-  const translations = {
-    ua: {
-      home: 'Головна',
-      login: 'Вхід',
-      register: 'Регістрація',
-    },
-    en: {
-      home: 'Home',
-      login: 'Login',
-      register: 'Register',
-    },
-  };
+  const currentTranslation =
+    translations[language as keyof typeof translations];
 
   return (
     <form className="form-home">
-      <header className="header">
+      <header className="header-filter">
         <div className="logo">AutoScout</div>
         <nav className="navbar">
-        <ul className="auth-lang-selector">
+          <ul className="auth-lang-selector">
             <li>
-              <Link to="/home">
-                {translations[language as keyof typeof translations].home}
-              </Link>
+              <Link to="/home">{currentTranslation.home}</Link>
             </li>
           </ul>
         </nav>
         <div className="auth-lang-selector nav-bar-auth">
-          <LanguageSwitchButton /> {}
-          <li>
-            <Link to="/login">
-              {translations[language as keyof typeof translations].login}
-            </Link>
-          </li>
-          <li>
-            <Link to="/register">
-              {translations[language as keyof typeof translations].register}
-            </Link>
-          </li>
+          <LanguageSwitchButton />
+          {auth.currentUser ? (
+            <li>
+              <Link to="/profile">{currentTranslation.profile}</Link>
+            </li>
+          ) : (
+            <>
+              <li>
+                <Link to="/login">{currentTranslation.login}</Link>
+              </li>
+              <li>
+                <Link to="/register">{currentTranslation.register}</Link>
+              </li>
+            </>
+          )}
         </div>
       </header>
       {news.map((News) => (
