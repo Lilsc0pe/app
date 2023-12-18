@@ -10,6 +10,7 @@ import "./filter.css";
 const translations = {
   ua: {
     // ...other translations...
+    home: 'Головна',
     news: 'Новини',
       login: 'Вхід',
       register: 'Регістрація',
@@ -89,6 +90,7 @@ const translations = {
   },
   en: {
     // ...other translations...
+    home: 'Home',
     news: 'News',
       login: 'Login',
       register: 'Register',
@@ -206,14 +208,17 @@ function Filter() {
       <header className="header-filter">
         <div className="logo">AutoScout</div>
         <nav className="navbar">
-          <ul className="nav-links">
+          <ul className="auth-lang-selector">
+            <li>
+              <Link to="/home">{translations[language as keyof typeof translations].home}</Link>
+            </li>
             <li>
               <Link to="/news">{translations[language as keyof typeof translations].news}</Link>
             </li>
           </ul>
         </nav>
-        <div className="auth-lang-selector">
-          <LanguageSwitchButton /> {/* Add LanguageSwitchButton */}
+        <div className="auth-lang-selector nav-bar-auth">
+            <LanguageSwitchButton /> {}
           <li>
             <Link to="/login">{translations[language as keyof typeof translations].login}</Link>
           </li>

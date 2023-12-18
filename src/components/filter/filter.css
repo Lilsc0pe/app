@@ -7,34 +7,71 @@
   padding: 50px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  background: #f3f3f3;
+  background: #ffff;
 }
 .header-filter{
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #575757;
+  background-color: #426f6f;
   border-radius: 7px 7px 7px 0;
   color: rgb(250, 255, 250);
 }
+.navbar li{
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #2f4f4f;
+  box-shadow: 0px 0px 36px 17px rgba(31, 41, 41, 0.2);
+}
 .auth-lang-selector {
   display: flex;
+  align-items: center;
   list-style-type: none;
   margin: 0;
   padding: 0;
+  
 }
-
 .auth-lang-selector li a {
   color: white;
   text-decoration: none;
   padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  
+}
+.navbar li :hover {
+  border-radius: 5px;
+  background-color: #1c2f2f;
+}
+.nav-bar-auth li{
+  background-color: #2e4f3f;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 36px 17px rgba(31, 41, 41, 0.2);
+}
+.nav-bar-auth li :hover{
+  border-radius: 5px;
+  background-color: #243f32;
+}
+.lang-switch-btn{
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: white;
+  font-size: medium;
+  padding: 8px 16px;
+}
+.lang-switch-btn img{
+  position: absolute;
+  top: -8px;
+  right: 16px;
+  height: 25px;
+  border-radius: 100%;
 }
 
-.auth-lang-selector li a:hover {
-  background-color: #ddd;
-  color: black;
-}
 
 .main-content{
   height: auto;
@@ -43,10 +80,8 @@
   display: flex;
   flex-direction: row;
 }
-
-
 .filters {
-  background-color: #D9D9D9;
+  background-color: #b4d0d0;;
   border-radius: 0 0 15px 15px;
   padding: 10px;
   display: flex;
@@ -63,6 +98,8 @@
   padding: 5px; 
   border: none; 
   outline: none; 
+  background-color: #eeffff;
+  border-radius: 5px;
 }
 
 
@@ -85,10 +122,10 @@
   width: 100%;
   height: 42px;
   padding-left: 10px;
-  border: 2px solid #666666;
+  border: 2px solid #4f2f4f;
   border-radius: 5px 0 0 5px;
   outline: none;
-  background: #e4e4e4;
+  background: #faebfa;
   font-size: 19px;
   border-right: none;
 }
@@ -97,7 +134,7 @@
   width: 100px;
   height: 47.9px;
   border: none;
-  background: #666666;
+  background: #4f2f4f;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
   color: rgb(250, 255, 250);
@@ -105,5 +142,5 @@
 
 .search-bar-filter button:hover,
 .search-bar-filter button:focus {
-  background-color: #444444;
+  background-color: #3f253f;
 }

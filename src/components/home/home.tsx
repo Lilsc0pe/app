@@ -61,7 +61,7 @@ function Home() {
   return (
     <form className="form-home">
       <header className="header">
-        <div className="logo">AutoScout</div>
+        <div className="logo" >AutoScout</div>
         <nav className="navbar">
           <ul className="nav-links">
              <li>

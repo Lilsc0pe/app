@@ -58,13 +58,6 @@ body {
   background-color: #45a049;
  }
  
- a {
-  display: block;
-  margin-top: 20px;
-  text-align: center;
-  color: #000;
-  text-decoration: none;
- }
  
  a:hover {
   color: #0056b3;
