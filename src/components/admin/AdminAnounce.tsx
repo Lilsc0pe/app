@@ -31,10 +31,6 @@ const AdminAnnounce: React.FC<AdminAnnounceProps> = ({ item }) => {
       console.error("Ошибка при сохранении изменений:", error);
     }
   };
-  
-  
-  
-  
 
   return (
     <div className="container-announce">

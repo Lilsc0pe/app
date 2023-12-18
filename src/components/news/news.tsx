@@ -73,7 +73,7 @@ function News() {
       {news.map((News) => (
         <Link to={`/announce/${News.id}`} key={News.id}>
           <div className="container">
-            <div className="-" key={News.id}>
+            <div key={News.id}>
               <img
                 className="img-container"
                 src={News.imageNewsURL}
