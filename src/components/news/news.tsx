@@ -55,19 +55,27 @@ function News() {
       <header className="header">
         <div className="logo">AutoScout</div>
         <nav className="navbar">
-          <ul className="nav-links">
-          <li>
-              <Link to="/home">{translations[language as keyof typeof translations].home}</Link>
-            </li>
+        <ul className="auth-lang-selector">
             <li>
-              <Link to="/login">{translations[language as keyof typeof translations].login}</Link>
-            </li>
-            <li>
-              <Link to="/register">{translations[language as keyof typeof translations].register}</Link>
+              <Link to="/home">
+                {translations[language as keyof typeof translations].home}
+              </Link>
             </li>
           </ul>
-          <LanguageSwitchButton /> {/* Use LanguageSwitchButton */}
         </nav>
+        <div className="auth-lang-selector nav-bar-auth">
+          <LanguageSwitchButton /> {}
+          <li>
+            <Link to="/login">
+              {translations[language as keyof typeof translations].login}
+            </Link>
+          </li>
+          <li>
+            <Link to="/register">
+              {translations[language as keyof typeof translations].register}
+            </Link>
+          </li>
+        </div>
       </header>
       {news.map((News) => (
         <Link to={`/announce/${News.id}`} key={News.id}>
