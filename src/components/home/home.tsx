@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { db, auth } from "../../firebase";
 import { Link } from "react-router-dom";
 import AdminAnnounce from "../admin/AdminAnounce";
@@ -20,7 +20,6 @@ export interface Item {
 
 function Home() {
   const [items, setItems] = useState<Item[]>([]);
-  const [inputId, setInputId] = useState("");
   const languageContext = useContext(LanguageContext);
 
   useEffect(() => {
@@ -36,27 +35,6 @@ function Home() {
 
     fetchData();
   }, []);
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputId(event.target.value);
-  };
-
-  const handleButtonClick = async () => {
-    const response = await fetch(
-      `https://developers.ria.com/auto/info?api_key=icYRfK5K7HNjAJHFM3YUgmDmjkhk3GmPQKUdq4wN&auto_id=${inputId}`
-    );
-    const data = await response.json();
-    const newItem: Item = {
-      imageURL: data.photoData?.seoLinkM || "",
-      id: data.autoData?.autoId || "",
-      name: data.autoData?.title || "",
-      text_1: data.autoData?.description || "",
-      text_2: "",
-      text_3: "",
-    };
-    await addDoc(collection(db, "home"), newItem);
-    setItems((prevItems) => [...prevItems, newItem]);
-  };
 
   if (!languageContext) {
     return null;
@@ -98,17 +76,6 @@ function Home() {
               </li>
             </>
           )}
-        </div>
-        <div>
-          <input
-            type="text"
-            value={inputId}
-            onChange={handleInputChange}
-            placeholder="Enter ID"
-          />
-          <button type="button" onClick={handleButtonClick}>
-            Load Data
-          </button>
         </div>
       </header>
       {filteredItems.map((item) => (
