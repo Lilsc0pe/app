@@ -13,9 +13,10 @@ export interface Item {
   imageURL: string;
   id: string;
   name: string;
-  text_1: string;
-  text_2: string;
-  text_3: string;
+  description: string;
+  value: number;
+  locationCityName: string;
+  linkToView: string;
 }
 
 function Home() {
@@ -49,10 +50,11 @@ function Home() {
     const newItem: Item = {
       imageURL: data.photoData?.seoLinkM || "",
       id: data.autoData?.autoId || "",
-      name: data.autoData?.title || "",
-      text_1: data.autoData?.description || "",
-      text_2: "",
-      text_3: "",
+      name: data.title || "",
+      description: data.autoData?.description || "",
+      locationCityName: data.locationCityName || "",
+      value: data.UAH || 0,
+      linkToView: data.linkToView || "",
     };
     await addDoc(collection(db, "home"), newItem);
     setItems((prevItems) => [...prevItems, newItem]);
@@ -121,9 +123,9 @@ function Home() {
               <img className="img-container" src={item.imageURL} alt="image" />
               <h2>{item.name}</h2>
               <div className="text-container-home">
-                <p>{item.text_1}</p>
-                <p>{item.text_2}</p>
-                <p>{item.text_3}</p>
+                <p>{item.description}</p>
+                <p>{item.locationCityName}</p>
+                <p>{item.value}</p>
               </div>
             </div>
           </div>

@@ -7,15 +7,7 @@ import "./announce.css";
 import { LanguageContext } from "../../contexts/LanguageContext";
 import LanguageSwitchButton from "../../contexts/LanguageSwitchButton";
 import { translations } from "../../contexts/translations";
-
-interface Item {
-  imageURL: string;
-  id: string;
-  name: string;
-  text_1: string;
-  text_2: string;
-  text_3: string;
-}
+import { Item } from "../home/home";
 
 interface AnnounceProps {
   item: Item;
@@ -38,10 +30,9 @@ function AnnounceItem({ item }: AnnounceProps) {
       <div className="block">
         <div className="text-container-home">
           <h2>{item.name}</h2>
-          <p>{item.text_1}</p>
-          <p>{item.text_2}</p>
-          <p>{item.text_3}</p>
-          <Link to={`/announce/${item.id}`} className="button">
+          <p>{item.description}</p>
+          <p>{item.locationCityName}</p>
+          <Link to={`/announce/${item.linkToView}`} className="button">
             {currentTranslation.goTo}
           </Link>
         </div>

@@ -44,18 +44,18 @@ const AdminAnnounce: React.FC<AdminAnnounceProps> = ({ item }) => {
             onChange={handleInputChange}
           />
           <textarea
-            name="text_1"
-            value={editedItem.text_1}
+            name="description"
+            value={editedItem.description}
             onChange={handleInputChange}
           ></textarea>
           <textarea
-            name="text_2"
-            value={editedItem.text_2}
+            name="name"
+            value={editedItem.name}
             onChange={handleInputChange}
           ></textarea>
           <textarea
-            name="text_3"
-            value={editedItem.text_3}
+            name="locationCityName"
+            value={editedItem.locationCityName}
             onChange={handleInputChange}
           ></textarea>
           <button onClick={handleSaveChanges}>Сохранить изменения</button>
