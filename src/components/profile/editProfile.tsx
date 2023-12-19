@@ -56,10 +56,10 @@ function EditProfile() {
   };
   return (
     <div>
-      <form className="form-registration-login-profile">
-        <h2 className="name-content">Edit</h2>
-        <div>
-          <label htmlFor="email-address">Name</label>
+      <form className="form-profile">
+        <h2 className="name-content-edit-profile">Edit</h2>
+        <div className="name-change-profile">
+          <label htmlFor="name-change-profile">Name</label>
           <input
             type="text"
             value={name}
@@ -70,7 +70,7 @@ function EditProfile() {
         </div>
 
         <Link to="/profile">
-          <button type="submit" onClick={handleChange}>
+          <button className="btn-edit-profile-submit btn-profile-together" type="submit" onClick={handleChange}>
             Change
           </button>
         </Link>

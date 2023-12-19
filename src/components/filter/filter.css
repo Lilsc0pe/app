@@ -65,9 +65,10 @@
 .lang-switch-btn img {
   position: absolute;
   top: -8px;
-  right: 16px;
-  height: 25px;
+  right: 3px;
+  height: 28px;
   border-radius: 100%;
+  width: 30px;
 }
 
 .main-content {

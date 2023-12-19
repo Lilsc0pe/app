@@ -1,9 +1,39 @@
-.name-content{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   padding: 0px;
-   margin: 0px; 
-
+.name-content-edit-profile{
+   font-size: 45px;
+   margin: 20px;
+   margin-bottom: 9px;
+}
+.name-change-profile{
+   font-size: 30px;
+   text-align: left;
+   margin-bottom: 20px;
 }
 
+.name-change-profile input{
+   padding: 10px; 
+   font-size: 16px; 
+   border-radius: 5px;
+   border: none; 
+   outline: none; 
+   background-color: #fff;
+   transition: border 0.3s ease-in-out; 
+ }
+
+ .btn-profile-together{
+   color: white; 
+   border: none; 
+   padding: 10px 20px;
+   text-align: center; 
+   font-size: 16px; 
+   cursor: pointer; 
+   border-radius: 5px;
+   margin: 10px;
+   margin-top: 15px;
+ }
+ 
+ .btn-edit-profile-submit{
+   background-color: #29704e; 
+ }
+ .btn-edit-profile-submit:hover{
+   background-color: #20593e;
+ }

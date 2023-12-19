@@ -49,26 +49,27 @@ function Profile() {
   };
 
   return (
-    <form className="form-registration-login-profile">
+    <form className="form-profile">
       {success && (
         <p className="success-message">Changes saved successfully!</p>
       )}
       {error && <p className="error-message">{error.message}</p>}
+      <h2 className="name-content-profile">Profile</h2>
 
-      <h2 className="name-content">Profile</h2>
-      <div>
+      <div className="name-email-profile">
         <p>Name: {name}</p>
         <p>Email: {email}</p>
       </div>
-
-      <Link to="/edit-profile">
-        <button>Edit Profile</button>
-      </Link>
-      <Link to="/login">
-        <button onClick={handleSignOut}>
-          Sign Out
-        </button>
-      </Link>
+      <div>
+        <Link to="/edit-profile">
+          <button className="btn-profile-together btn-edit-profile">Edit Profile</button>
+        </Link>
+        <Link to="/login">
+          <button className="btn-profile-together btn-sign-out-profile" onClick={handleSignOut}>
+            Sign Out
+          </button>
+        </Link>
+      </div>
     </form>
   );
 }
