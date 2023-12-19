@@ -50,6 +50,9 @@ function News() {
             <li>
               <Link to="/home">{currentTranslation.home}</Link>
             </li>
+            <li>
+              <Link to="/filter">{currentTranslation.filtersHeading}</Link>
+            </li>
           </ul>
         </nav>
         <div className="auth-lang-selector nav-bar-auth">

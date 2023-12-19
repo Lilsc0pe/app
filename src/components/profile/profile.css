@@ -1,24 +1,111 @@
-.name-content{
+.form-registration-login-profile {
+   position: relative;
+  background-color: gray;
+  overflow: hidden; /* Hide the parts of the square that go outside the form */
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   margin: 20px;
+   padding: 20px;
+   border-radius: 10px;
+   background-color: rgb(180, 177, 177);
+   background-image: 
+     linear-gradient(0deg, transparent 24%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.1) 26%, transparent 27%, transparent 74%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1) 76%, transparent 77%, transparent),
+     linear-gradient(90deg, transparent 24%, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.1) 26%, transparent 27%, transparent 74%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1) 76%, transparent 77%, transparent);
+   height: 100%;
+   background-size: 50px 50px;
+ }
+
+ .form-registration-login-profile::before {
+   content: "";
+   position: absolute;
+   width: 200px; /* Adjust to the size you want */
+   height: 200px; /* Adjust to the size you want */
+   background-color: black; /* Adjust to the color you want */
+   transform: rotate(45deg); /* Rotate the square */
+   top: -100px; /* Adjust to position the square */
+   left: -100px; /* Adjust to position the square */
+ }
+ 
+ /* Styles for the success and error messages */
+ .success-message, .error-message {
+   width: 80%;
+   padding: 10px;
+   margin-bottom: 20px;
+   border-radius: 5px;
+   text-align: center;
+ }
+ 
+ .success-message {
+   background-color: #d4edda;
+   color: #155724;
+ }
+ 
+ .error-message {
+   background-color: #f8d7da;
+   color: #721c24;
+ }
+ 
+ /* Styles for the profile content */
+ .name-content {
+   font-size: 24px;
+   font-weight: bold;
+   margin-bottom: 20px;
+   font-family:
+   system-ui,
+   -apple-system,
+   BlinkMacSystemFont,
+   "Segoe UI",
+   Roboto,
+   Oxygen,
+   Ubuntu,
+   Cantarell,
+   "Open Sans",
+   "Helvetica Neue",
+   sans-serif,
+   sans-serif;
+ }
+ 
+ /* Styles for the profile details */
+ .form-registration-login-profile div {
+   margin-bottom: 20px;
+ }
+ 
+ /* Styles for the buttons */
+ .form-registration-login-profile button {
+   margin: 10px;
+   padding: 10px 20px;
+   border: none;
+   border-radius: 5px;
+   background-color: #28a745;
+   color: white;
+   cursor: pointer;
    display: flex;
    justify-content: center;
-   align-items: center;
-   padding: 0px;
-   margin: 0px; 
+   text-decoration: none;
+ }
+ 
+ 
+ .form-registration-login-profile button:hover {
+   background-color: #218838; /* Changed to darker green */
+ }
+ 
 
-}
-
-.off-click{
+ .off-click {
    width: 100%;
    margin-top: 25px;
-    padding: 5px;
-    background-color: #af4c4c;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-}
+   padding: 5px;
+   background-color: #28a745;
+   color: white;
+   border: none;
+   border-radius: 3px;
+   cursor: pointer;
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+   display: flex;
+   justify-content: center;
+   text-decoration: none; /* Added this line */
+ }
 
 .off-click:hover {
-   background-color: #a04545;
-  }
+   background-color: #218838; /* Changed to darker green */
+ }

@@ -8,6 +8,15 @@
   color: white;
 }
 
+.header-filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
 .form-home {
   box-shadow:
     rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
@@ -29,6 +38,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.navbar ul {
+  display: flex;
+  list-style: none;
+}
+
+.navbar li {
+  margin-right: 20px;
 }
 
 .nav-links {
@@ -90,15 +108,29 @@
   align-items: center;
 }
 
-.img-container {
-  width: 100%;
-  height: 400px;
-  height: 100%; /* Adjust the height as needed */
-  overflow: hidden;
+.auth-lang-selector {
+  display: flex;
 }
 
-.text-container-home {
-  float: left;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* This will center the items horizontally */
+  justify-content: center; /* This will center the items vertically */
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: lightgray;
+}
+
+/* Styles for the image container */
+.img-container {
   width: 100%;
+  height: auto;
+}
+
+/* Styles for the text container */
+.text-container-home {
+  margin-top: 20px;
   text-align: left;
 }

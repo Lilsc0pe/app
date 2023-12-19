@@ -65,7 +65,7 @@ function Profile() {
         <button>Edit Profile</button>
       </Link>
       <Link to="/login">
-        <button className="off-click" onClick={handleSignOut}>
+        <button onClick={handleSignOut}>
           Sign Out
         </button>
       </Link>
