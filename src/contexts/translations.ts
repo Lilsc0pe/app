@@ -10,6 +10,10 @@ export const translations = {
     loginLink: "Вхід",
     registerLink: "Реєстрація",
     filtersHeading: "Фільтри",
+    edit: "Редагувати",
+    name: "Ім'я",
+    description: "Опис",
+    value: "Ціна UAH",
     goTo: "Перейти",
     carBrandLabel: "Марка",
     carBrands: {
@@ -29,7 +33,7 @@ export const translations = {
       peugeot: "Пежо",
       fiat: "Фіат",
     },
-    carReleaseYearLabel: "Рік випуску авто", // Correct translation in Ukrainian
+    carReleaseYearLabel: "Рік випуску авто",
     carStatusLabel: "Статус авто",
     carStatusOptions: {
       new: "Новий",
@@ -92,6 +96,10 @@ export const translations = {
     registerLink: "Register",
     filtersHeading: "Filters",
     carBrandLabel: "Brand",
+    value: "Price UAH",
+    edit: "Edit",
+    name: "Name",
+    description: "Description",
     goTo: "Go to",
     carBrands: {
       audi: "Audi",

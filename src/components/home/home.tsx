@@ -84,6 +84,22 @@ function Home() {
             </li>
           </ul>
         </nav>
+        <div className="input-container">
+          <input
+            className="input-field"
+            type="text"
+            value={inputId}
+            onChange={handleInputChange}
+            placeholder="Enter ID"
+          />
+          <button
+            className="load-button"
+            type="button"
+            onClick={handleButtonClick}
+          >
+            Load Data
+          </button>
+        </div>
         <div className="auth-lang-selector nav-bar-auth">
           <LanguageSwitchButton />
           {auth.currentUser ? (
@@ -101,18 +117,8 @@ function Home() {
             </>
           )}
         </div>
-        <div>
-          <input
-            type="text"
-            value={inputId}
-            onChange={handleInputChange}
-            placeholder="Enter ID"
-          />
-          <button type="button" onClick={handleButtonClick}>
-            Load Data
-          </button>
-        </div>
       </header>
+
       {filteredItems.map((item) => (
         <AdminAnnounce key={item.id} item={item} />
       ))}

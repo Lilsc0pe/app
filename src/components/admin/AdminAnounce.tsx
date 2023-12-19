@@ -1,7 +1,11 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, useContext } from "react";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase";
-
+import "./AdminAnounce.css";
+//language
+import { LanguageContext } from "../../contexts/LanguageContext";
+import LanguageSwitchButton from "../../contexts/LanguageSwitchButton";
+import { translations } from "../../contexts/translations";
 // Check the import path for the Item interface
 import { Item } from "../home/home";
 
@@ -31,33 +35,46 @@ const AdminAnnounce: React.FC<AdminAnnounceProps> = ({ item }) => {
       console.error("Ошибка при сохранении изменений:", error);
     }
   };
+  const languageContext = useContext(LanguageContext);
+  if (!languageContext) {
+    return null;
+  }
+
+  const { language } = languageContext;
+  const currentTranslation =
+    translations[language as keyof typeof translations];
 
   return (
     <div className="container-announce">
       <img src={editedItem.imageURL} alt="image" />
-      <div className="block">
+      <div className="block-admin">
         <div className="text-container">
+          <h1>{currentTranslation.edit}</h1>
+          <h3>{currentTranslation.name}:</h3>
           <input
             type="text"
             name="name"
             value={editedItem.name}
             onChange={handleInputChange}
           />
+          <h3>{currentTranslation.description}:</h3>
           <textarea
             name="description"
             value={editedItem.description}
             onChange={handleInputChange}
           ></textarea>
-          <textarea
-            name="name"
-            value={editedItem.name}
+          <h3>{currentTranslation.value}:</h3>
+          <input
+            name="value"
+            value={editedItem.value}
             onChange={handleInputChange}
-          ></textarea>
-          <textarea
+          ></input>
+          <h3>{currentTranslation.carRegionLabel}:</h3>
+          <input
             name="locationCityName"
             value={editedItem.locationCityName}
             onChange={handleInputChange}
-          ></textarea>
+          ></input>
           <button onClick={handleSaveChanges}>Сохранить изменения</button>
         </div>
       </div>
