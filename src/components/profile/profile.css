@@ -43,3 +43,7 @@
 .btn-sign-out-profile:hover{
   background-color: #603048;
 }
+.btn-go-to-home{
+  background-color: #D93384; 
+  float: right;
+}

@@ -69,6 +69,11 @@ function Profile() {
             Sign Out
           </button>
         </Link>
+        <Link to="/home">
+          <button className="btn-profile-together btn-go-to-home" onClick={handleSignOut}>
+            Home Page
+          </button>
+        </Link>
       </div>
     </form>
   );
