@@ -4,7 +4,6 @@ import { db } from "../../firebase";
 import "./AdminAnounce.css";
 //language
 import { LanguageContext } from "../../contexts/LanguageContext";
-import LanguageSwitchButton from "../../contexts/LanguageSwitchButton";
 import { translations } from "../../contexts/translations";
 // Check the import path for the Item interface
 import { Item } from "../home/home";
@@ -72,10 +71,10 @@ const AdminAnnounce: React.FC<AdminAnnounceProps> = ({ item }) => {
           <h3>{currentTranslation.carRegionLabel}:</h3>
           <input
             name="locationCityName"
-            value={editedItem.locationCityName}
+            value={editedItem.regionName}
             onChange={handleInputChange}
           ></input>
-          <button onClick={handleSaveChanges}>Сохранить изменения</button>
+          <button onClick={handleSaveChanges}>{currentTranslation.save}</button>
         </div>
       </div>
     </div>

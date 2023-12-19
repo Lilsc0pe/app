@@ -14,6 +14,7 @@ interface AnnounceProps {
 }
 
 function AnnounceItem({ item }: AnnounceProps) {
+  const { id } = useParams<{ id: string }>();
   const languageContext = useContext(LanguageContext);
 
   if (!languageContext) {
@@ -24,6 +25,10 @@ function AnnounceItem({ item }: AnnounceProps) {
   const currentTranslation =
     translations[language as keyof typeof translations];
 
+  if (item.id !== id) {
+    return null;
+  }
+
   return (
     <div className="container-announce">
       <img src={item.imageURL} alt="image" />
@@ -31,8 +36,8 @@ function AnnounceItem({ item }: AnnounceProps) {
         <div className="text-container-home">
           <h2>{item.name}</h2>
           <p>{item.description}</p>
-          <p>{item.locationCityName}</p>
-          <Link to={`/announce/${item.linkToView}`} className="button">
+          <p>{item.value}</p>
+          <Link to={`/announce/${item.id}`} className="button">
             {currentTranslation.goTo}
           </Link>
         </div>
@@ -43,7 +48,6 @@ function AnnounceItem({ item }: AnnounceProps) {
 
 function Home() {
   const [items, setItems] = useState<Item[]>([]);
-  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,8 +71,6 @@ function Home() {
   const { language } = languageContext;
   const currentTranslation =
     translations[language as keyof typeof translations];
-
-  const filteredItems = items.filter((item) => item.id === id);
 
   return (
     <form className="form-home">
@@ -102,7 +104,7 @@ function Home() {
           )}
         </div>
       </header>
-      {filteredItems.map((item) => (
+      {items.map((item) => (
         <AnnounceItem key={item.id} item={item} />
       ))}
     </form>

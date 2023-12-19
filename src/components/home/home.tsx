@@ -15,7 +15,7 @@ export interface Item {
   name: string;
   description: string;
   value: number;
-  locationCityName: string;
+  regionName: string;
   linkToView: string;
 }
 
@@ -52,7 +52,7 @@ function Home() {
       id: data.autoData?.autoId || "",
       name: data.title || "",
       description: data.autoData?.description || "",
-      locationCityName: data.locationCityName || "",
+      regionName: data.stateData?.regionName || "",
       value: data.UAH || 0,
       linkToView: data.linkToView || "",
     };
@@ -84,6 +84,7 @@ function Home() {
             </li>
           </ul>
         </nav>
+
         <div className="input-container">
           <input
             className="input-field"
@@ -100,6 +101,7 @@ function Home() {
             Load Data
           </button>
         </div>
+
         <div className="auth-lang-selector nav-bar-auth">
           <LanguageSwitchButton />
           {auth.currentUser ? (
@@ -130,7 +132,7 @@ function Home() {
               <h2>{item.name}</h2>
               <div className="text-container-home">
                 <p>{item.description}</p>
-                <p>{item.locationCityName}</p>
+                <p>{item.regionName}</p>
                 <p>{item.value}</p>
               </div>
             </div>
